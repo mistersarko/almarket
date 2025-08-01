@@ -1,0 +1,30 @@
+import shutil
+import os
+import zipfile
+
+# Define base directory structure
+base_path = "/mnt/data/AlMarket"
+frontend_path = os.path.join(base_path, "frontend")
+backend_path = os.path.join(base_path, "backend")
+
+# Create directories
+os.makedirs(frontend_path, exist_ok=True)
+os.makedirs(backend_path, exist_ok=True)
+
+# Create example frontend files
+with open(os.path.join(frontend_path, "index.html"), "w") as f:
+    f.write("<!DOCTYPE html><html><head><title>AlMarket</title></head><body><h1>Frontend</h1></body></html>")
+
+# Create example backend files
+with open(os.path.join(backend_path, "server.js"), "w") as f:
+    f.write("const express = require('express');\nconst app = express();\napp.listen(3000, () => console.log('Server running'));")
+
+# Create a README file
+with open(os.path.join(base_path, "README.md"), "w") as f:
+    f.write("# AlMarket\n\nThis is the AlMarket project structure with frontend and backend folders.")
+
+# Zip the entire structure
+zip_path = "/mnt/data/AlMarket.zip"
+shutil.make_archive("/mnt/data/AlMarket", 'zip', base_path)
+
+zip_path
