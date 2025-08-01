@@ -1,0 +1,58 @@
+from zipfile import ZipFile
+import os
+
+# Create the frontend project structure again after code state reset
+project_name = "almarket-frontend"
+base_path = f"/mnt/data/{project_name}"
+os.makedirs(base_path, exist_ok=True)
+
+# Create basic frontend files
+files = {
+    "index.html": """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlMarket - Game Shop</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Welcome to AlMarket!</h1>
+    <p>Multi-language Game Shop (Turkmen, Russian, English)</p>
+  </div>
+</body>
+</html>
+""",
+    "style.css": """
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+""",
+    "script.js": """
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('AlMarket frontend ready.');
+});
+""",
+    "README.md": "# AlMarket Frontend\n\nProduction-ready frontend for AlMarket game shop."
+}
+
+# Write files to the directory
+for filename, content in files.items():
+    with open(os.path.join(base_path, filename), "w") as f:
+        f.write(content.strip())
+
+# Zip the folder
+zip_path = f"/mnt/data/{project_name}.zip"
+with ZipFile(zip_path, 'w') as zipf:
+    for foldername, subfolders, filenames in os.walk(base_path):
+        for filename in filenames:
+            filepath = os.path.join(foldername, filename)
+            arcname = os.path.relpath(filepath, base_path)
+            zipf.write(filepath, arcname)
+
+zip_path
