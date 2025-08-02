@@ -1,14 +1,62 @@
-// AlMarket Full Frontend Setup (React + TailwindCSS + All Pages)
+# AlMarket – Game Item Shop
 
-import React from "react"; import { createRoot } from "react-dom/client"; import { BrowserRouter as Router, Routes, Route, Navigate, } from "react-router-dom";
+**AlMarket** is a multi-language digital game shop that supports purchases for games like PUBG Mobile, Free Fire, Mobile Legends, and Call of Duty. The shop features custom pricing, point systems, internal payment handling, per-order chat, and full admin control.
 
-// Pages import Home from "./pages/Home"; import Catalog from "./pages/Catalog"; import Checkout from "./pages/Checkout"; import AdminPanel from "./pages/AdminPanel"; import OrderTracking from "./pages/OrderTracking"; import Chat from "./pages/Chat"; import PaymentSuccess from "./pages/PaymentSuccess"; import PaymentCancel from "./pages/PaymentCancel"; import NotFound from "./pages/NotFound";
+---
 
-// Components import Layout from "./components/Layout";
+## 🌐 Supported Languages
 
-// Styles import "./index.css";
+- Turkmen
+- Russian
+- English
 
-const App = () => ( <Router> <Layout> <Routes> <Route path="/" element={<Home />} /> <Route path="/catalog" element={<Catalog />} /> <Route path="/checkout" element={<Checkout />} /> <Route path="/admin" element={<AdminPanel />} /> <Route path="/order/:orderId" element={<OrderTracking />} /> <Route path="/chat/:orderId" element={<Chat />} /> <Route path="/payment-success" element={<PaymentSuccess />} /> <Route path="/payment-cancel" element={<PaymentCancel />} /> <Route path="*" element={<NotFound />} /> </Routes> </Layout> </Router> );
+---
 
-const container = document.getElementById("root"); const root = createRoot(container); root.render(<App />);
+## 🎮 Supported Games
 
+- PUBG Mobile (UC)
+- Free Fire (Diamonds)
+- Mobile Legends (Diamonds)
+- Call of Duty Mobile (CP)
+- And more...
+
+---
+
+## ⚙️ Technologies Used
+
+- **Frontend**: React, TailwindCSS, React Router
+- **Backend**: Node.js (Express), MongoDB
+- **Hosting**: Vercel (Frontend), Render or Railway (Backend)
+- **Payments**: Stripe Integration
+
+---
+
+## 🚀 Features
+
+- Internal payment system (no card data stored)
+- Multi-language support (3 languages)
+- Admin panel with full control (orders, prices, items, chat)
+- Automatic status system:
+  - **Ýatyryldy** – Cancelled (unpaid)
+  - **Garasylyar** – Waiting (paid, processing)
+  - **Gowşuryldy** – Delivered (admin button)
+- Per-order private chat (buyer ↔ admin)
+- Point system (e.g., 60UC = 5 points, 325UC = 20 points)
+- UC split logic (e.g., 600UC = 300UC + 300UC if needed)
+- Custom pricing and editable catalog
+- Order tracking page for each user
+- Admin logs of all orders
+
+---
+
+## 🧾 Order Flow
+
+1. Buyer selects game & UC/points
+2. Enters in-game ID
+3. Pays via internal Stripe system
+4. Order gets status: `Garasylyar`
+5. Admin confirms: status → `Gowşuryldy`
+
+---
+
+## 📁 Project Structure
