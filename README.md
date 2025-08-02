@@ -1,40 +1,14 @@
-# AlMarket 🎮
+// AlMarket Full Frontend Setup (React + TailwindCSS + All Pages)
 
-**AlMarket** – ähli oýunlar üçin sanly harytlary satyn almak we sargyt etmek üçin niýetlenen onlaýn dükany.
+import React from "react"; import { createRoot } from "react-dom/client"; import { BrowserRouter as Router, Routes, Route, Navigate, } from "react-router-dom";
 
-## 🔥 Esasy aýratynlyklar:
+// Pages import Home from "./pages/Home"; import Catalog from "./pages/Catalog"; import Checkout from "./pages/Checkout"; import AdminPanel from "./pages/AdminPanel"; import OrderTracking from "./pages/OrderTracking"; import Chat from "./pages/Chat"; import PaymentSuccess from "./pages/PaymentSuccess"; import PaymentCancel from "./pages/PaymentCancel"; import NotFound from "./pages/NotFound";
 
-- 🎯 Oýunlaryň hemmesi üçin goldaw: PUBG Mobile, Mobile Legends, Free Fire, Call of Duty Mobile we başga-da köp.
-- 💳 Stripe arkaly içki töleg ulgam (ulanyjynyň kart maglumatlary saklanmaýar).
-- 🧾 Sargytlaryň ýagdaýy awtomatik:
-  - Tölenmedik sargytlar: **Ýatyryldy**
-  - Tölenen: **Garasylyar**
-  - Eltilen: **Gowşuryldy** (Admin tarapyndan el bilen düzedilýär)
-- 🗨 Her sargyt üçin aýratyn admin-ulanyjy çat ulgamy.
-- 🔢 Bal ulgamy: Mysal üçin 60UC = 5 bal, 325UC = 20 bal...
-- 🎛 Admin paneli:
-  - Bahalary we harytlary üýtgetmek
-  - Sargytlaryň ýagdaýyny dolandyrmak
-  - Sargyt loglaryny görmek
+// Components import Layout from "./components/Layout";
 
-## 🌐 Diller
+// Styles import "./index.css";
 
-- Türkmençe 🇹🇲
-- Русский 🇷🇺
-- English 🇺🇸
+const App = () => ( <Router> <Layout> <Routes> <Route path="/" element={<Home />} /> <Route path="/catalog" element={<Catalog />} /> <Route path="/checkout" element={<Checkout />} /> <Route path="/admin" element={<AdminPanel />} /> <Route path="/order/:orderId" element={<OrderTracking />} /> <Route path="/chat/:orderId" element={<Chat />} /> <Route path="/payment-success" element={<PaymentSuccess />} /> <Route path="/payment-cancel" element={<PaymentCancel />} /> <Route path="*" element={<NotFound />} /> </Routes> </Layout> </Router> );
 
-## 🛠 Tehnologiýalar
+const container = document.getElementById("root"); const root = createRoot(container); root.render(<App />);
 
-- **Frontend**: React + Tailwind (Netlify/Vercel)
-- **Backend**: Node.js (Render/Railway)
-- **Database**: PostgreSQL
-- **API**: RESTful API
-- **Payment**: Stripe
-
-## 🚀 Onlaýn Demo
-
-[https://al-market.vercel.app](https://al-market.vercel.app)
-
----
-
-💼 Bu proýekt 100% işe taýýar, göni ulanyşa goýbermek üçin taýýarlan!
