@@ -60,3 +60,61 @@
 ---
 
 ## 📁 Project Structure
+```
+almarket/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   └── Layout.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Catalog.jsx
+│   │   ├── Checkout.jsx
+│   │   ├── AdminPanel.jsx
+│   │   ├── OrderTracking.jsx
+│   │   ├── Chat.jsx
+│   │   ├── PaymentSuccess.jsx
+│   │   ├── PaymentCancel.jsx
+│   │   └── NotFound.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env (Stripe keys, etc.)
+├── tailwind.config.js
+├── package.json
+└── README.md
+```
+
+---
+
+## 🛠️ Setup Instructions
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/mistersarko/almarket.git
+   cd almarket
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the dev server:
+   ```bash
+   npm run dev
+   ```
+
+4. Frontend runs at: `http://localhost:5173`
+
+---
+
+## 🌍 Production URL
+
+- [https://al-market.vercel.app](https://al-market.vercel.app)
+
+---
+
+## 📩 Contact
+
+- Developer: [@mistersarko](https://github.com/mistersarko)
