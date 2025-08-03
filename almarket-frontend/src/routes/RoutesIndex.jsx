@@ -1,17 +1,16 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage";
-import SuccessPage from "../pages/SuccessPage";
-import CancelPage from "../pages/CancelPage";
-import NotFoundPage from "../pages/NotFoundPage";
+import AboutPage from "../pages/AboutPage";
+import ContactPage from "../pages/ContactPage";
+import NotFound from "../pages/NotFound";
 
 const RoutesIndex = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/success" element={<SuccessPage />} />
-      <Route path="/cancel" element={<CancelPage />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
