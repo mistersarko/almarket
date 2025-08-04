@@ -4,11 +4,10 @@ import LoginPage from "../pages/LoginPage";
 import Dashboard from "../pages/Dashboard";
 import { isAuthenticated } from "../utils/auth";
 
+// Auth kontrol komponenti
 const ProtectedRoute = ({ children }) => {
-  if (!isAuthenticated()) {
-    return <Navigate to="/login" replace />;
-  }
-  return children;
+  const authed = isAuthenticated();
+  return authed ? children : <Navigate to="/login" replace />;
 };
 
 const router = createBrowserRouter([
