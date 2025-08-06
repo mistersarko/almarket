@@ -2,57 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\CategoryResource;
+use App\Models\Attribute;
+use App\Models\AttributeValue;
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Category::all();
+        $categories = Category::query()
+            ->when($request->has('parent_id'), function ($query) use ($request) {
+                $query->where('parent_id', $request->get('parent_id'));
+            })
+            ->with('children')
+            ->get();
+
+        return CategoryResource::collection($categories);
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        $data = $request->validated();
 
-        $category = Category::create([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-        ]);
+        $category = Category::create($data);
 
-        return response()->json($category, 201);
+        return new CategoryResource($category);
     }
 
-    public function show($id)
+    public function show(Category $category)
     {
-        return Category::findOrFail($id);
+        return new CategoryResource($category);
     }
 
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        $category = Category::findOrFail($id);
+        $data = $request->validated();
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        $category->update($data);
 
-        $category->update([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
-        ]);
-
-        return response()->json($category);
+        return new CategoryResource($category);
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
         $category->delete();
 
-        return response()->json(['message' => 'Category deleted']);
+        return response()->json(null, 204);
     }
 }
