@@ -61,28 +61,7 @@
 
 ## 📁 Project Structure
 ```
-almarket/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   │   └── Layout.jsx
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── Catalog.jsx
-│   │   ├── Checkout.jsx
-│   │   ├── AdminPanel.jsx
-│   │   ├── OrderTracking.jsx
-│   │   ├── Chat.jsx
-│   │   ├── PaymentSuccess.jsx
-│   │   ├── PaymentCancel.jsx
-│   │   └── NotFound.jsx
-│   ├── index.css
-│   └── main.jsx
-├── .env (Stripe keys, etc.)
-├── tailwind.config.js
-├── package.json
-└── README.md
+
 ```
 
 ---
