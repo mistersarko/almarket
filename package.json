@@ -1,0 +1,9 @@
+{
+  "name": "almarket",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "cd almarket-backend && composer install && cd ../almarket-frontend && npm install",
+    "dev": "cd almarket-frontend && npm run dev"
+  }
+}
