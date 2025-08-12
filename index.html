@@ -2,6 +2,7 @@
 <html lang="tk">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Market</title>
   <style>
     body {
@@ -34,7 +35,6 @@
     }
     .game {
       background: #2e2e40;
-      border: 1px solid #444;
       border-radius: 10px;
       padding: 15px;
       width: 220px;
@@ -58,17 +58,9 @@
       font-size: 14px;
       color: #aaa;
     }
-    .buy-btn {
-      background-color: #007bff;
+    .game a {
+      text-decoration: none;
       color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-    .buy-btn:hover {
-      background-color: #0056b3;
     }
   </style>
 </head>
@@ -80,31 +72,35 @@
 
   <section class="games">
     <div class="game">
-      <img src="https://i.ytimg.com/vi/5qUTYjZj7XI/maxresdefault.jpg" alt="PUBG Mobile">
-      <h3>PUBG Mobile</h3>
-      <p>Bahasy: 25 TMT – 60 UC</p>
-      <button class="buy-btn">Satyn al</button>
+      <a href="pubg.html">
+        <img src="https://i.ytimg.com/vi/5qUTYjZj7XI/maxresdefault.jpg" alt="PUBG Mobile">
+        <h3>PUBG Mobile</h3>
+        <p>UC satyn alyň</p>
+      </a>
     </div>
 
     <div class="game">
-      <img src="https://cdn1.dotesports.com/wp-content/uploads/2021/11/17100703/Free-Fire.jpg" alt="Free Fire">
-      <h3>Free Fire</h3>
-      <p>Bahasy: 20 TMT – 100 Diamond</p>
-      <button class="buy-btn">Satyn al</button>
+      <a href="freefire.html">
+        <img src="https://cdn1.dotesports.com/wp-content/uploads/2021/11/17100703/Free-Fire.jpg" alt="Free Fire">
+        <h3>Free Fire</h3>
+        <p>Diamond satyn alyň</p>
+      </a>
     </div>
 
     <div class="game">
-      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?fit=crop&w=600&q=80" alt="Call of Duty Mobile">
-      <h3>Call of Duty Mobile</h3>
-      <p>Bahasy: 30 TMT – CP Satyn almak</p>
-      <button class="buy-btn">Satyn al</button>
+      <a href="cod.html">
+        <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?fit=crop&w=600&q=80" alt="COD Mobile">
+        <h3>Call of Duty Mobile</h3>
+        <p>CP satyn alyň</p>
+      </a>
     </div>
 
     <div class="game">
-      <img src="https://i.ytimg.com/vi/NLRL5VrnF7k/maxresdefault.jpg" alt="Mobile Legends">
-      <h3>Mobile Legends</h3>
-      <p>Bahasy: 22 TMT – Diamonds</p>
-      <button class="buy-btn">Satyn al</button>
+      <a href="legends.html">
+        <img src="https://i.ytimg.com/vi/NLRL5VrnF7k/maxresdefault.jpg" alt="Mobile Legends">
+        <h3>Mobile Legends</h3>
+        <p>Diamonds satyn alyň</p>
+      </a>
     </div>
   </section>
 </body>
