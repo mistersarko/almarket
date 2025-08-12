@@ -2,85 +2,108 @@
 <html lang="tk">
 <head>
   <meta charset="UTF-8">
-  <title>AL Market</title>
+  <title>Game Market</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #1e1e2f;
+      color: #fff;
       margin: 0;
       padding: 0;
     }
     header {
-      background: #0077cc;
-      color: white;
+      background: #2b2b3d;
       padding: 20px;
       text-align: center;
     }
-    .products {
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+    header p {
+      margin-top: 5px;
+      font-size: 16px;
+      color: #ccc;
+    }
+    .games {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      padding: 20px;
+      padding: 30px;
     }
-    .product {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+    .game {
+      background: #2e2e40;
+      border: 1px solid #444;
+      border-radius: 10px;
       padding: 15px;
-      width: 200px;
+      width: 220px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
     }
-    .product img {
+    .game:hover {
+      transform: scale(1.03);
+    }
+    .game img {
       width: 100%;
-      height: auto;
-      border-radius: 5px;
+      height: 130px;
+      border-radius: 6px;
+      object-fit: cover;
     }
-    .product h3 {
+    .game h3 {
       margin: 10px 0 5px;
     }
-    .product p {
-      margin: 0 0 10px;
+    .game p {
+      font-size: 14px;
+      color: #aaa;
     }
     .buy-btn {
-      background-color: #28a745;
+      background-color: #007bff;
       color: white;
-      padding: 8px 12px;
+      padding: 8px 14px;
       border: none;
       border-radius: 5px;
+      margin-top: 10px;
       cursor: pointer;
     }
     .buy-btn:hover {
-      background-color: #218838;
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>AL Market</h1>
-    <p>Onlaýn bazara hoş geldiňiz!</p>
+    <h1>Game Market</h1>
+    <p>Oýunlaryň bazaryna hoş geldiňiz!</p>
   </header>
 
-  <section class="products">
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150" alt="Haryt 1">
-      <h3>Ýumşak çörek</h3>
-      <p>Bahasy: 10 TMT</p>
+  <section class="games">
+    <div class="game">
+      <img src="https://i.ytimg.com/vi/5qUTYjZj7XI/maxresdefault.jpg" alt="PUBG Mobile">
+      <h3>PUBG Mobile</h3>
+      <p>Bahasy: 25 TMT – 60 UC</p>
       <button class="buy-btn">Satyn al</button>
     </div>
 
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150" alt="Haryt 2">
-      <h3>Göke önüm</h3>
-      <p>Bahasy: 5 TMT</p>
+    <div class="game">
+      <img src="https://cdn1.dotesports.com/wp-content/uploads/2021/11/17100703/Free-Fire.jpg" alt="Free Fire">
+      <h3>Free Fire</h3>
+      <p>Bahasy: 20 TMT – 100 Diamond</p>
       <button class="buy-btn">Satyn al</button>
     </div>
 
-    <div class="product">
-      <img src="https://via.placeholder.com/200x150" alt="Haryt 3">
-      <h3>Ýumurtga (10 sany)</h3>
-      <p>Bahasy: 15 TMT</p>
+    <div class="game">
+      <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437d1?fit=crop&w=600&q=80" alt="Call of Duty Mobile">
+      <h3>Call of Duty Mobile</h3>
+      <p>Bahasy: 30 TMT – CP Satyn almak</p>
+      <button class="buy-btn">Satyn al</button>
+    </div>
+
+    <div class="game">
+      <img src="https://i.ytimg.com/vi/NLRL5VrnF7k/maxresdefault.jpg" alt="Mobile Legends">
+      <h3>Mobile Legends</h3>
+      <p>Bahasy: 22 TMT – Diamonds</p>
       <button class="buy-btn">Satyn al</button>
     </div>
   </section>
