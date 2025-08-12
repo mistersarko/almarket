@@ -1,19 +1,13 @@
+import type { AppProps } from 'next/app';
 import { SpeedInsights } from '@vercel/speed-insights/next';
  
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <html lang="en">
-      <head>
-        <title>Next.js</title>
-      </head>
-      <body>
-        {children}
-        <SpeedInsights />
-      </body>
-    </html>
+    <>
+      <Component {...pageProps} />
+      <SpeedInsights />
+    </>
   );
 }
+ 
+export default MyApp;
