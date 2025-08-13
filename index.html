@@ -4,61 +4,75 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GAME MARKET</title>
+<meta name="color-scheme" content="dark light">
 <style>
   :root{
-    --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#9aa4b2;
-    --accent:#3b82f6; --accent-2:#60a5fa; --ring:#1e293b;
+    --bg:#0b1220; --panel:#0f172a; --ink:#e5e7eb; --muted:#9aa4b2;
+    --line:#1f2937; --accent:#3b82f6; --accent2:#60a5fa; --bad:#ef4444;
+    --radius:16px; --shadow:0 12px 30px rgba(2,6,23,.35);
   }
   *{box-sizing:border-box}
-  html,body{height:100%}
   body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-       background:linear-gradient(180deg,#0b1220 0%,#0a0f1a 100%);color:var(--ink)}
+       background:linear-gradient(180deg,#0b1220 0%,#0a0f1a 100%); color:var(--ink)}
   a{color:inherit;text-decoration:none}
-  /* Top bar */
-  .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
-          padding:.75rem 1rem;background:rgba(15,23,42,.8);backdrop-filter:blur(8px);border-bottom:1px solid #1f2937}
+
+  /* Topbar */
+  .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+          padding:.75rem 1rem;background:rgba(15,23,42,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .brand{display:flex;gap:.6rem;align-items:center}
-  .logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,#3b82f6 0,#0ea5e9 100%);
-        display:grid;place-items:center;box-shadow:0 8px 30px rgba(59,130,246,.35)}
-  .logo span{font-size:18px}
-  .title{font-weight:800;letter-spacing:.5px}
-  .lang{display:flex;gap:.35rem}
-  .chip{border:1px solid #334155;background:#0b1220;color:#cbd5e1;padding:.25rem .6rem;border-radius:999px;font-size:.8rem;cursor:pointer}
-  .chip.active{background:#3b82f6;border-color:#3b82f6;color:white}
+  .logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+        background:linear-gradient(135deg,var(--accent) 0%,#0ea5e9 100%); box-shadow:var(--shadow)}
+  .title{font-weight:800;letter-spacing:.4px}
+  .lang{display:flex;gap:.4rem}
+  .chip{border:1px solid #334155;background:transparent;color:#cbd5e1;padding:.28rem .7rem;border-radius:999px;
+        font-size:.8rem;cursor:pointer}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
   /* Info badges */
-  .badges{display:flex;gap:.6rem;overflow:auto;padding:.5rem 1rem;color:var(--muted);font-size:.9rem}
-  .badge{display:inline-flex;gap:.35rem;align-items:center;background:#0f172a;border:1px solid #1f2937;
-         padding:.35rem .6rem;border-radius:999px;white-space:nowrap}
-  /* Sections */
-  main{padding:1rem;padding-bottom:5.5rem;max-width:1100px;margin:0 auto}
+  .badges{display:flex;gap:.6rem;overflow:auto;padding:.6rem 1rem;color:var(--muted);font-size:.9rem}
+  .pill{display:inline-flex;gap:.35rem;align-items:center;background:#0b1220;border:1px solid var(--line);
+        padding:.35rem .6rem;border-radius:999px;white-space:nowrap}
+
+  /* Main */
+  main{max-width:1100px;margin:0 auto;padding:1rem 1rem 5.5rem}
   .section{display:none}
   .section.active{display:block}
-  /* Catalog grid (now empty) */
+
+  /* Grid + Card */
   .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
-  .empty{border:1px dashed #334155;border-radius:16px;padding:2rem;text-align:center;color:var(--muted);
+  .card{position:relative;border:1px solid var(--line);background:#0b1220;border-radius:var(--radius);overflow:hidden}
+  .thumb{background:#111827;aspect-ratio:1/1;display:block}
+  .content{padding:.8rem}
+  .gname{font-weight:700;margin:0 0 .35rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem .9rem;border:1px solid #334155;border-radius:12px;
+       background:linear-gradient(180deg,#0b1220 0,#0f172a 100%);color:#e5e7eb;transition:transform .12s,box-shadow .12s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 12px 20px rgba(59,130,246,.18)}
+  .badge{-webkit-user-select:none;user-select:none;position:absolute;top:.6rem;left:.6rem;background:var(--bad);
+         color:#fff;font-size:.75rem;padding:.2rem .5rem;border-radius:999px}
+
+  /* Empty */
+  .empty{border:1px dashed #334155;border-radius:var(--radius);padding:2rem;text-align:center;color:var(--muted);
          background:rgba(2,6,23,.35)}
   .empty b{color:#cbd5e1}
-  /* Fancy CTA button */
-  .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:12px;border:1px solid #334155;
-       background:linear-gradient(180deg,#0b1220 0,#0f172a 100%);color:#e5e7eb;transition:transform .12s ease, box-shadow .12s ease}
-  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(59,130,246,.18)}
+
   /* Bottom nav */
-  .bottom{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);
-          border-top:1px solid #1f2937}
+  .bottom{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(15,23,42,.95);backdrop-filter:blur(10px);
+          border-top:1px solid var(--line)}
   .tabs{display:grid;grid-template-columns:repeat(3,1fr)}
   .tab{padding:.6rem 0;text-align:center;color:#cbd5e1;cursor:pointer}
-  .tab span{display:block;font-size:.78rem;margin-top:.15rem}
-  .tab.active{color:#fff;background:linear-gradient(180deg,rgba(59,130,246,.18),rgba(59,130,246,0))}
-  /* Small helpers */
-  .row{display:flex;gap:.6rem;flex-wrap:wrap}
-  .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:1rem}
+  .tab span{display:block;font-size:.78rem;margin-top:.12rem}
+  .tab.active{color:#fff;background:linear-gradient(180deg,rgba(59,130,246,.16),rgba(59,130,246,0))}
+
+  @media (min-width:1024px){
+    .grid{grid-template-columns:repeat(5,1fr)}
+  }
 </style>
 </head>
 <body>
   <!-- TOP -->
   <header class="topbar">
     <div class="brand">
-      <div class="logo"><span>🎮</span></div>
+      <div class="logo">🎮</div>
       <div class="title" id="t-market">GAME MARKET</div>
     </div>
     <div class="lang">
@@ -68,43 +82,55 @@
     </div>
   </header>
 
-  <!-- INFO BADGES -->
+  <!-- INFO -->
   <div class="badges">
-    <div class="badge">🕘 <span id="t-online">7/24 online</span></div>
-    <div class="badge">🛡️ <span id="t-safe">100% Howpsuz</span></div>
-    <div class="badge">⚡ <span id="t-fast">Tiz</span></div>
+    <div class="pill">🕘 <span id="t-online">7/24 online</span></div>
+    <div class="pill">🛡️ <span id="t-safe">100% Howpsuz</span></div>
+    <div class="pill">⚡ <span id="t-fast">Tiz</span></div>
   </div>
 
   <!-- CONTENT -->
   <main>
-    <!-- GAMES -->
+    <!-- PAGE: GAMES -->
     <section id="page-games" class="section active">
-      <div class="row" style="align-items:center;justify-content:space-between;margin:.2rem 0 1rem">
-        <h2 style="margin:0" id="t-games">Oýunlar</h2>
-        <button class="btn" id="add-demo" type="button">+ Demo haryt goş (sonra poz)</button>
-      </div>
+      <h2 id="t-games" style="margin:.2rem 0 1rem">Oýunlar</h2>
+
+      <!-- EMPTY PLACEHOLDER -->
       <div id="grid" class="grid">
         <div class="empty">
           <b id="t-empty-title">Haryt ýok</b><br>
           <span id="t-empty-desc">Soňundan oýunlary goşarys — häzirlikçe bu ýer boş.</span>
         </div>
       </div>
+
+      <!-- PRODUCTS (add later) -->
+      <template id="tpl-card">
+        <article class="card">
+          <span class="badge">-10%</span>
+          <img class="thumb" alt="">
+          <div class="content">
+            <div class="gname"></div>
+            <a class="btn" href="javascript:void(0)" data-i18n-btn>🛒 <span>Sargyt et</span></a>
+          </div>
+        </article>
+      </template>
     </section>
 
-    <!-- ORDERS -->
+    <!-- PAGE: ORDERS -->
     <section id="page-orders" class="section">
       <h2 id="t-orders">Sargytlar</h2>
-      <div class="card">
-        <p id="t-orders-desc">Bu bölüm häzirki wagtda boş. Soň backend/içerik goşular.</p>
-        <button class="btn" type="button" onclick="alert('Placeholder')">↗ <span id="t-open">Aç</span></button>
+      <div class="empty">
+        <b id="t-orders-title">Häzir boş</b><br>
+        <span id="t-orders-desc">Bu bölüm soň doldurylar.</span>
       </div>
     </section>
 
-    <!-- ANALYTICS -->
+    <!-- PAGE: ANALYTICS -->
     <section id="page-analytics" class="section">
       <h2 id="t-analytics">Analiz</h2>
-      <div class="card">
-        <p id="t-analytics-desc">Grafik/hasabat üçin ýer. Häzir boş skeleton.</p>
+      <div class="empty">
+        <b id="t-analytics-title">Grafik üçin ýer</b><br>
+        <span id="t-analytics-desc">Häzir skeleton görnüşde.</span>
       </div>
     </section>
   </main>
@@ -118,95 +144,118 @@
     </div>
   </nav>
 
-  <script>
-    // --- Simple i18n ---
-    const dict = {
-      tm:{ market:"GAME MARKET", online:"7/24 onlaýn", safe:"100% Howpsuz", fast:"Tiz",
-           games:"Oýunlar", emptyTitle:"Haryt ýok", emptyDesc:"Soňundan oýunlary goşarys — häzirlikçe bu ýer boş.",
-           orders:"Sargytlar", ordersDesc:"Bu bölüm häzirki wagtda boş. Soň backend/içerik goşular.", open:"Aç",
-           analytics:"Analiz", analyticsDesc:"Grafik/hasabat üçin ýer. Häzir boş skeleton." },
-      ru:{ market:"GAME MARKET", online:"24/7 онлайн", safe:"100% Безопасно", fast:"Быстро",
-           games:"Игры", emptyTitle:"Нет товаров", emptyDesc:"Позже добавим игры — сейчас пусто.",
-           orders:"Заказы", ordersDesc:"Раздел пока пуст. Позже добавим бэкенд/контент.", open:"Открыть",
-           analytics:"Аналитика", analyticsDesc:"Место для графиков/отчетов. Пока пустой скелетон." },
-      en:{ market:"GAME MARKET", online:"24/7 online", safe:"100% Safe", fast:"Fast",
-           games:"Games", emptyTitle:"No items", emptyDesc:"We’ll add games later — it’s empty for now.",
-           orders:"Orders", ordersDesc:"Section is empty for now. Backend/content coming later.", open:"Open",
-           analytics:"Analytics", analyticsDesc:"Space for charts/reports. Skeleton for now." }
-    };
-    const LS='siteLang';
-    let lang = localStorage.getItem(LS) || 'tm';
+<script>
+  /* --- SIMPLE I18N --- */
+  const D = {
+    tm:{ market:"GAME MARKET", online:"7/24 onlaýn", safe:"100% Howpsuz", fast:"Tiz",
+         games:"Oýunlar", emptyTitle:"Haryt ýok", emptyDesc:"Soňundan oýunlary goşarys — häzirlikçe bu ýer boş.",
+         orders:"Sargytlar", ordersTitle:"Häzir boş", ordersDesc:"Bu bölüm soň doldurylar.",
+         analytics:"Analiz", analyticsTitle:"Grafik üçin ýer", analyticsDesc:"Häzir skeleton görnüşde.",
+         orderBtn:"Sargyt et" },
+    ru:{ market:"GAME MARKET", online:"24/7 онлайн", safe:"100% Безопасно", fast:"Быстро",
+         games:"Игры", emptyTitle:"Нет товаров", emptyDesc:"Позже добавим игры — сейчас пусто.",
+         orders:"Заказы", ordersTitle:"Пока пусто", ordersDesc:"Раздел будет заполнен позже.",
+         analytics:"Аналитика", analyticsTitle:"Место для графиков", analyticsDesc:"Пока скелетон.",
+         orderBtn:"Заказать" },
+    en:{ market:"GAME MARKET", online:"24/7 online", safe:"100% Safe", fast:"Fast",
+         games:"Games", emptyTitle:"No items", emptyDesc:"We’ll add games later — it’s empty for now.",
+         orders:"Orders", ordersTitle:"Empty for now", ordersDesc:"This section will be filled later.",
+         analytics:"Analytics", analyticsTitle:"Space for charts", analyticsDesc:"Skeleton for now.",
+         orderBtn:"Order" }
+  };
+  const LS='siteLang';
+  let lang = localStorage.getItem(LS) || 'tm';
 
-    function setLang(l){
-      lang=l; localStorage.setItem(LS,l);
-      document.getElementById('t-market').textContent = dict[l].market;
-      document.getElementById('t-online').textContent = dict[l].online;
-      document.getElementById('t-safe').textContent   = dict[l].safe;
-      document.getElementById('t-fast').textContent   = dict[l].fast;
+  function setLang(l){
+    lang=l; localStorage.setItem(LS,l);
+    const d=D[l];
+    document.getElementById('t-market').textContent    = d.market;
+    document.getElementById('t-online').textContent    = d.online;
+    document.getElementById('t-safe').textContent      = d.safe;
+    document.getElementById('t-fast').textContent      = d.fast;
 
-      document.getElementById('t-games').textContent  = dict[l].games;
-      document.getElementById('t-empty-title').textContent = dict[l].emptyTitle;
-      document.getElementById('t-empty-desc').textContent  = dict[l].emptyDesc;
+    document.getElementById('t-games').textContent     = d.games;
+    document.getElementById('t-empty-title').textContent = d.emptyTitle;
+    document.getElementById('t-empty-desc').textContent  = d.emptyDesc;
 
-      document.getElementById('t-orders').textContent = dict[l].orders;
-      document.getElementById('t-orders-desc').textContent = dict[l].ordersDesc;
-      document.getElementById('t-open').textContent = dict[l].open;
+    document.getElementById('t-orders').textContent    = d.orders;
+    document.getElementById('t-orders-title').textContent = d.ordersTitle;
+    document.getElementById('t-orders-desc').textContent  = d.ordersDesc;
 
-      document.getElementById('t-analytics').textContent = dict[l].analytics;
-      document.getElementById('t-analytics-desc').textContent = dict[l].analyticsDesc;
+    document.getElementById('t-analytics').textContent    = d.analytics;
+    document.getElementById('t-analytics-title').textContent = d.analyticsTitle;
+    document.getElementById('t-analytics-desc').textContent  = d.analyticsDesc;
 
-      document.getElementById('n-games').textContent = dict[l].games;
-      document.getElementById('n-orders').textContent = dict[l].orders;
-      document.getElementById('n-analytics').textContent = dict[l].analytics;
+    document.getElementById('n-games').textContent     = d.games;
+    document.getElementById('n-orders').textContent    = d.orders;
+    document.getElementById('n-analytics').textContent = d.analytics;
 
-      document.querySelectorAll('.chip').forEach(ch=>ch.classList.toggle('active', ch.dataset.lang===l));
+    document.querySelectorAll('.chip').forEach(ch=>ch.classList.toggle('active', ch.dataset.lang===l));
+    document.querySelectorAll('[data-i18n-btn] span').forEach(s=>s.textContent=d.orderBtn);
+  }
+
+  document.querySelectorAll('.chip[data-lang]').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
+  });
+
+  /* --- BOTTOM NAV ROUTER --- */
+  const pages = {
+    games: document.getElementById('page-games'),
+    orders: document.getElementById('page-orders'),
+    analytics: document.getElementById('page-analytics')
+  };
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      Object.values(pages).forEach(p=>p.classList.remove('active'));
+      pages[t.dataset.go].classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+
+  /* --- ADD PRODUCTS LATER ---
+     How to add:
+     1) Fill the PRODUCTS array below.
+     2) Call render().
+     Each card auto-gets "-10%" badge and "Order" button, NO prices shown.
+  */
+  const PRODUCTS = [
+    // Example to add later:
+    // { id:"pubg", name:"PUBG Mobile", img:"https://.../pubg.jpg" },
+    // { id:"freefire", name:"Free Fire", img:"https://.../ff.jpg" },
+  ];
+
+  function render(){
+    const grid=document.getElementById('grid');
+    if(!PRODUCTS.length){
+      grid.innerHTML = `
+        <div class="empty">
+          <b id="t-empty-title">${D[lang].emptyTitle}</b><br>
+          <span id="t-empty-desc">${D[lang].emptyDesc}</span>
+        </div>`;
+      return;
     }
+    const tpl=document.getElementById('tpl-card');
+    grid.innerHTML='';
+    PRODUCTS.forEach(p=>{
+      const node=tpl.content.cloneNode(true);
+      const img=node.querySelector('.thumb');
+      const name=node.querySelector('.gname');
+      const btn=node.querySelector('[data-i18n-btn] span');
 
-    document.querySelectorAll('.chip[data-lang]').forEach(b=>{
-      b.addEventListener('click', ()=> setLang(b.dataset.lang));
+      img.src=p.img || 'https://via.placeholder.com/600x600?text=GAME';
+      img.alt=p.name||'Game';
+      name.textContent=p.name||'Game';
+      btn.textContent=D[lang].orderBtn;
+
+      grid.appendChild(node);
     });
+  }
 
-    // --- Bottom nav simple router ---
-    const pages = {
-      games: document.getElementById('page-games'),
-      orders: document.getElementById('page-orders'),
-      analytics: document.getElementById('page-analytics')
-    };
-    document.querySelectorAll('.tab').forEach(t=>{
-      t.addEventListener('click', ()=>{
-        document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-        t.classList.add('active');
-        const to = t.dataset.go;
-        Object.values(pages).forEach(p=>p.classList.remove('active'));
-        pages[to].classList.add('active');
-        window.scrollTo({top:0,behavior:'smooth'});
-      });
-    });
-
-    // --- Demo adder (only to see a card, you can delete later) ---
-    const grid = document.getElementById('grid');
-    const demoBtn = document.getElementById('add-demo');
-    demoBtn.addEventListener('click', ()=>{
-      grid.innerHTML = '';
-      const demo = Array.from({length:6}).map((_,i)=>`
-        <article style="position:relative;border:1px solid #1f2937;background:#0b1220;border-radius:16px;overflow:hidden">
-          <div style="padding:10px 10px 0">
-            <div style="position:absolute;top:10px;left:10px;background:#ef4444;color:#fff;font-size:.75rem;
-                        padding:.2rem .45rem;border-radius:999px">-10%</div>
-            <div style="background:#111827;border-radius:12px;overflow:hidden">
-              <img src="https://via.placeholder.com/400x400?text=GAME+${i+1}" alt="Game" style="width:100%;display:block">
-            </div>
-          </div>
-          <div style="padding:10px 12px 14px">
-            <div style="font-weight:700;margin-bottom:.35rem">Game ${i+1}</div>
-            <a class="btn" href="javascript:void(0)">Sargyt et</a>
-          </div>
-        </article>
-      `).join('');
-    });
-
-    // init
-    setLang(lang);
-  </script>
+  // init
+  setLang(lang);
+  render();
+</script>
 </body>
 </html>
