@@ -1,71 +1,81 @@
-<!doctype html>
-<html lang="tk">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GAME MARKET</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="logo">🎮</span>
-      <strong>GAME MARKET</strong>
-    </div>
-    <div class="lang">
-      <button class="chip">TM</button>
-      <button class="chip">RU</button>
-      <button class="chip active">EN</button>
-    </div>
-  </header>
-
-  <div class="badges">
-    <span>🕘 7/24 online</span>
-    <span>🛡️ 100% Howpsuz</span>
-    <span>⚡ Tiz</span>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">🎮</span>
+    <strong data-i18n="market">GAME MARKET</strong>
   </div>
+  <div class="lang">
+    <button class="chip" data-lang="tm">TM</button>
+    <button class="chip" data-lang="ru">RU</button>
+    <button class="chip active" data-lang="en">EN</button>
+  </div>
+</header>
 
-  <main>
-    <section id="grid" class="grid"></section>
-  </main>
+<div class="badges">
+  <span data-i18n="online">7/24 online</span>
+  <span data-i18n="safe">100% Howpsuz</span>
+  <span data-i18n="fast">Tiz</span>
+</div>
 
-  <nav class="bottom-nav">
-    <a class="nav-item active">🎮 oýun</a>
-    <a class="nav-item" href="#">📦 заказ</a>
-    <a class="nav-item" href="#">📊 analiz</a>
-  </nav>
+<!-- ... grid we galan bölek üýtgemez ... -->
 
-  <script>
-    async function load() {
-      const res = await fetch('games.json');
-      const games = await res.json();
-      const grid = document.getElementById('grid');
-      grid.innerHTML = games.map(g => `
-        <article class="card" onclick='selectGame(${JSON.stringify(g).replace(/'/g,"&apos;")})'>
-          ${g.discount ? `<span class="badge">-${g.discount}%</span>` : ""}
-          <img src="${g.image}" alt="${g.name}" loading="lazy"/>
-          <h3 class="name">${g.name}</h3>
-          <div class="meta">
-            ${g.platform ? `<span class="pill">${g.platform}</span>` : ""}
-            <span class="price">${formatPrice(g.price, g.discount)} TMT</span>
-          </div>
-        </article>
-      `).join('');
-    }
+<nav class="bottom-nav">
+  <a class="nav-item active"><span>🎮</span> <span data-i18n="game">oýun</span></a>
+  <a class="nav-item" href="#"><span>📦</span> <span data-i18n="orders">sargytlar</span></a>
+  <a class="nav-item" href="#"><span>📊</span> <span data-i18n="analytics">analiz</span></a>
+</nav>
 
-    function formatPrice(price, discount){
-      if(!discount) return price;
-      const p = Math.round(price * (100 - discount) / 100);
-      return p;
-    }
+<script>
+  const LS_LANG = 'siteLang';
+  let dict = {}, lang = localStorage.getItem(LS_LANG) || (navigator.language.startsWith('ru') ? 'ru' : navigator.language.startsWith('tk') ? 'tm' : 'en');
 
-    function selectGame(game){
-      // Saýlanan oýny ýatda sakla we sargyt sahypasyna geç
-      localStorage.setItem('selectedGame', JSON.stringify(game));
-      window.location.href = 'order.html';
-    }
+  async function i18nLoad(){
+    dict = await fetch('lang.json').then(r=>r.json());
+    setLang(lang);
+    // Bar bolan JS: oýunlary ýüklemek
+    loadGames();
+  }
 
-    load();
-  </script>
-</body>
-</html>
+  function setLang(l){
+    lang = l;
+    localStorage.setItem(LS_LANG, l);
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[l] && dict[l][key]) el.textContent = dict[l][key];
+    });
+    document.querySelectorAll('.lang .chip').forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+  }
+
+  // Dil düwmeleri
+  document.addEventListener('click', (e)=>{
+    const b = e.target.closest('.chip[data-lang]');
+    if(b){ setLang(b.dataset.lang); }
+  });
+
+  async function loadGames(){
+    const res = await fetch('games.json');
+    const games = await res.json();
+    const grid = document.getElementById('grid');
+    grid.innerHTML = games.map(g => `
+      <article class="card" onclick='selectGame(${JSON.stringify(g).replace(/'/g,"&apos;")})'>
+        ${g.discount ? `<span class="badge">-${g.discount}%</span>` : ""}
+        <img src="${g.image}" alt="${g.name}" loading="lazy"/>
+        <h3 class="name">${g.name}</h3>
+        <div class="meta">
+          ${g.platform ? `<span class="pill">${g.platform}</span>` : ""}
+          <span class="price">${formatPrice(g.price, g.discount)} TMT</span>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  function formatPrice(price, discount){
+    if(!discount) return price;
+    return Math.round(price * (100 - discount) / 100);
+  }
+  function selectGame(game){
+    localStorage.setItem('selectedGame', JSON.stringify(game));
+    window.location.href = 'order.html';
+  }
+
+  i18nLoad();
+</script>
