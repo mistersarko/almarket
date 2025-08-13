@@ -1,20 +1,42 @@
 [
   {
-    "name": "Skin A",
-    "price": 10,
-    "image": "https://via.placeholder.com/200",
-    "link": "mailto:contact@example.com"
+    "id": "pubg-mobile",
+    "name": "PUBG Mobile",
+    "price": 120,
+    "discount": 11,
+    "image": "https://via.placeholder.com/300x300?text=PUBG",
+    "platform": "Mobile"
   },
   {
-    "name": "Key B",
-    "price": 25,
-    "image": "https://via.placeholder.com/200",
-    "link": "mailto:contact@example.com"
+    "id": "arena-breakout",
+    "name": "Arena Breakout",
+    "price": 150,
+    "discount": 50,
+    "image": "https://via.placeholder.com/300x300?text=Arena",
+    "platform": "PC"
   },
   {
-    "name": "Coin Pack",
-    "price": 5,
-    "image": "https://via.placeholder.com/200",
-    "link": "mailto:contact@example.com"
+    "id": "genshin-impact",
+    "name": "Genshin Impact",
+    "price": 99,
+    "discount": 55,
+    "image": "https://via.placeholder.com/300x300?text=Genshin",
+    "platform": "Mobile"
+  },
+  {
+    "id": "brawl-stars",
+    "name": "Brawl Stars",
+    "price": 60,
+    "discount": 10,
+    "image": "https://via.placeholder.com/300x300?text=Brawl",
+    "platform": "Mobile"
+  },
+  {
+    "id": "zzz",
+    "name": "Zenless Zone Zero",
+    "price": 140,
+    "discount": 50,
+    "image": "https://via.placeholder.com/300x300?text=ZZZ",
+    "platform": "PC"
   }
 ]
