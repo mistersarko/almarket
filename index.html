@@ -1,39 +1,71 @@
 <!doctype html>
 <html lang="tk">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Al Market</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>🎮 Al Market</h1>
-      <p>Oýunlary satyn almak üçin esasy sahypa</p>
-    </header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GAME MARKET</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🎮</span>
+      <strong>GAME MARKET</strong>
+    </div>
+    <div class="lang">
+      <button class="chip">TM</button>
+      <button class="chip">RU</button>
+      <button class="chip active">EN</button>
+    </div>
+  </header>
 
-    <main id="products"></main>
+  <div class="badges">
+    <span>🕘 7/24 online</span>
+    <span>🛡️ 100% Howpsuz</span>
+    <span>⚡ Tiz</span>
+  </div>
 
-    <footer>
-      <small>© 2025 Al Market</small>
-    </footer>
+  <main>
+    <section id="grid" class="grid"></section>
+  </main>
 
-    <script>
-      fetch('products.json')
-        .then(res => res.json())
-        .then(data => {
-          const container = document.getElementById('products');
-          data.forEach(item => {
-            container.innerHTML += `
-              <div class="card">
-                <img src="${item.image}" alt="${item.name}">
-                <h2>${item.name}</h2>
-                <p class="price">${item.price} TMT</p>
-                <a href="${item.link}" class="btn">Satyn al</a>
-              </div>
-            `;
-          });
-        });
-    </script>
-  </body>
+  <nav class="bottom-nav">
+    <a class="nav-item active">🎮 oýun</a>
+    <a class="nav-item" href="#">📦 заказ</a>
+    <a class="nav-item" href="#">📊 analiz</a>
+  </nav>
+
+  <script>
+    async function load() {
+      const res = await fetch('games.json');
+      const games = await res.json();
+      const grid = document.getElementById('grid');
+      grid.innerHTML = games.map(g => `
+        <article class="card" onclick='selectGame(${JSON.stringify(g).replace(/'/g,"&apos;")})'>
+          ${g.discount ? `<span class="badge">-${g.discount}%</span>` : ""}
+          <img src="${g.image}" alt="${g.name}" loading="lazy"/>
+          <h3 class="name">${g.name}</h3>
+          <div class="meta">
+            ${g.platform ? `<span class="pill">${g.platform}</span>` : ""}
+            <span class="price">${formatPrice(g.price, g.discount)} TMT</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function formatPrice(price, discount){
+      if(!discount) return price;
+      const p = Math.round(price * (100 - discount) / 100);
+      return p;
+    }
+
+    function selectGame(game){
+      // Saýlanan oýny ýatda sakla we sargyt sahypasyna geç
+      localStorage.setItem('selectedGame', JSON.stringify(game));
+      window.location.href = 'order.html';
+    }
+
+    load();
+  </script>
+</body>
 </html>
