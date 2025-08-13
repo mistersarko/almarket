@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="tk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sargyt</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .wrap{max-width:720px;margin:0 auto;padding:1rem}
+    form{background:#fff;border-radius:16px;padding:1rem;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+    label{display:block;margin:.6rem 0 .25rem}
+    input,select,textarea{width:100%;padding:.6rem;border:1px solid #ddd;border-radius:10px;background:#fff}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+    .summary{margin:1rem 0;padding:.8rem;border-radius:12px;background:#f3f4f6}
+    .actions{display:flex;gap:.6rem;flex-wrap:wrap}
+    .btn{display:inline-block;padding:.6rem 1rem;border-radius:10px;border:1px solid #ddd;text-decoration:none}
+    .btn.primary{background:#0070f3;color:#fff;border-color:#0070f3}
+    @media(prefers-color-scheme:dark){
+      form{background:#151515}
+      input,select,textarea{border-color:#333;background:#0f0f0f;color:#eee}
+      .summary{background:#0f172a;color:#e5e7eb}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Sargyt</h1>
+    <div id="gameBox" class="summary">Saýlanan oýun ýok.</div>
+
+    <form id="orderForm" onsubmit="sendOrder(event)">
+      <div class="row">
+        <div>
+          <label>Adyňyz</label>
+          <input id="name" required />
+        </div>
+        <div>
+          <label>Telefon / WhatsApp</label>
+          <input id="phone" required />
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Mukdary</label>
+          <input id="qty" type="number" min="1" value="1" required />
+        </div>
+        <div>
+          <label>Töleg görnüşi</label>
+          <select id="pay">
+            <option>Nağd</option>
+            <option>Kart</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Bellik (islege görä)</label>
+      <textarea id="note" rows="3" placeholder="Akkaunt ID / Server / ýüzlenme..."></textarea>
+
+      <div class="actions">
+        <button class="btn primary" type="submit">Sargyt et</button>
+        <a class="btn" href="index.html">← Yza</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const box = document.getElementById('gameBox');
+    const selected = JSON.parse(localStorage.getItem('selectedGame') || 'null');
+    let unitPrice = 0;
+
+    if(selected){
+      const after = selected.discount ? Math.round(selected.price*(100-selected.discount)/100) : selected.price;
+      unitPrice = after;
+      box.innerHTML = `
+        <strong>${selected.name}</strong>
+        ${selected.platform ? `<span class="pill" style="margin-left:.4rem">${selected.platform}</span>`:''}
+        ${selected.discount ? `<span class="pill" style="margin-left:.4rem">-${selected.discount}%</span>`:''}
+        <div style="margin-top:.4rem">Baha: <b>${after} TMT</b> (birine)</div>
+      `;
+    }
+
+    function sendOrder(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const qty = parseInt(document.getElementById('qty').value || '1', 10);
+      const pay = document.getElementById('pay').value;
+      const note = document.getElementById('note').value.trim();
+      const total = unitPrice * qty;
+
+      // Häzirlikçe "mailto" arkaly iberýäris (backend gerek däl).
+      const subject = encodeURIComponent(`Sargyt: ${selected ? selected.name : 'Oýun'} x${qty}`);
+      const body = encodeURIComponent(
+        `Oýun: ${selected ? selected.name : '-'}\n` +
+        `Platforma: ${selected?.platform || '-'}\n` +
+        `Baha (birine): ${unitPrice} TMT\n` +
+        `Mukdar: ${qty}\n` +
+        `Jemi: ${total} TMT\n` +
+        `Ady: ${name}\n` +
+        `Telefon: ${phone}\n` +
+        `Töleg: ${pay}\n` +
+        `Bellik: ${note}`
+      );
+      window.location.href = `mailto:contact@example.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
