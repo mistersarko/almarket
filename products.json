@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Skin A",
+    "price": 10,
+    "image": "https://via.placeholder.com/200",
+    "link": "mailto:contact@example.com"
+  },
+  {
+    "name": "Key B",
+    "price": 25,
+    "image": "https://via.placeholder.com/200",
+    "link": "mailto:contact@example.com"
+  },
+  {
+    "name": "Coin Pack",
+    "price": 5,
+    "image": "https://via.placeholder.com/200",
+    "link": "mailto:contact@example.com"
+  }
+]
