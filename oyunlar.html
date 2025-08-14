@@ -1,234 +1,148 @@
-<!doctype html>
-<html lang="tk">
+<!DOCTYPE html>
+<html lang="tm">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Oýunlar</title>
-<meta name="color-scheme" content="dark">
-<style>
-  :root{
-    --bg:#0b1220; --card:#0f172a; --ink:#e5e7eb; --muted:#9aa4b2;
-    --line:#1f2937; --bad:#ef4444; --accent:#3b82f6;
-    --r:16px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:linear-gradient(180deg,#0b1220,#0a0f1a);color:var(--ink);
-            font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  main{max-width:1100px;margin:0 auto;padding:1rem 1rem 3rem}
-  .top{display:flex;gap:.6rem;align-items:center;justify-content:space-between;margin:.25rem 0 1rem}
-  .langs{display:flex;gap:.4rem}
-  .chip{border:1px solid #334155;background:transparent;color:#cbd5e1;padding:.28rem .7rem;border-radius:999px;
-        font-size:.8rem;cursor:pointer}
-  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
-
-  .info{display:flex;gap:.6rem;flex-wrap:wrap;color:var(--muted);margin:.25rem 0 1rem}
-  .pill{display:inline-flex;gap:.35rem;align-items:center;background:#0b1220;border:1px solid var(--line);
-        padding:.35rem .6rem;border-radius:999px;white-space:nowrap}
-
-  .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
-  .card{position:relative;border:1px solid var(--line);background:#0b1220;border-radius:var(--r);overflow:hidden}
-  .thumb{width:100%;display:block;aspect-ratio:1/1;background:#111827;object-fit:cover}
-  .badge{position:absolute;top:.6rem;left:.6rem;background:var(--bad);color:#fff;font-size:.75rem;padding:.2rem .5rem;border-radius:999px}
-  .body{padding:.8rem}
-  .name{font-weight:700;margin:0 0 .4rem}
-  .row{display:flex;gap:.5rem;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.55rem .85rem;border:1px solid #334155;border-radius:12px;
-       background:linear-gradient(180deg,#0b1220 0,#0f172a 100%);color:#e5e7eb;transition:transform .12s,box-shadow .12s}
-  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 18px rgba(59,130,246,.18)}
-  .empty{border:1px dashed #334155;border-radius:var(--r);padding:2rem;text-align:center;color:var(--muted);background:rgba(2,6,23,.35)}
-
-  /* Modal */
-  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,.6);backdrop-filter:blur(6px);z-index:50}
-  .modal.open{display:flex}
-  .sheet{width:min(720px,92vw);border:1px solid var(--line);background:#0b1220;border-radius:20px;overflow:hidden}
-  .sheet-header{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1rem;border-bottom:1px solid var(--line);background:#0f172a}
-  .x{border:1px solid #334155;background:transparent;color:#cbd5e1;border-radius:10px;padding:.35rem .6rem;cursor:pointer}
-  .sheet-body{display:grid;gap:1rem;grid-template-columns:220px 1fr;padding:1rem}
-  .sheet-body img{width:100%;border-radius:12px;border:1px solid var(--line);background:#111827;aspect-ratio:1/1;object-fit:cover}
-  .sheet-actions{display:flex;gap:.6rem;margin-top:.6rem;flex-wrap:wrap}
-  @media (max-width:680px){ .sheet-body{grid-template-columns:1fr} }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oýunlar</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .card h3 {
+      font-size: 1.05em;
+      margin: 5px 0 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      background: #0070f3;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9em;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: #0059c9;
+    }
+  </style>
 </head>
 <body>
-  <main>
-    <div class="top">
-      <h2 id="t-title" style="margin:0">Oýunlar</h2>
-      <div class="langs">
-        <button class="chip" data-lang="tk">TM</button>
-        <button class="chip" data-lang="ru">RU</button>
-        <button class="chip" data-lang="en">EN</button>
-      </div>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/PUBG_Mobile_logo.jpg" alt="PUBG Mobile">
+      <h3>PUBG Mobile</h3>
+      <a class="btn" href="pubg.html" target="_blank">Sargyt et</a>
     </div>
 
-    <div class="info">
-      <div class="pill">🕘 <span id="t-online">7/24 onlaýn</span></div>
-      <div class="pill">🛡️ <span id="t-safe">100% Howpsuz</span></div>
-      <div class="pill">⚡ <span id="t-fast">Tiz</span></div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/6/69/Free_Fire_Logo.png" alt="Free Fire">
+      <h3>Free Fire</h3>
+      <a class="btn" href="freefire.html" target="_blank">Sargyt et</a>
     </div>
 
-    <div id="grid" class="grid"></div>
-
-    <div class="empty" id="empty" style="display:none">
-      <b id="t-empty-title">Haryt ýok</b><br>
-      <span id="t-empty-desc">Soňundan goşarys — häzirlikçe boş.</span>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/1/17/Delta_Force_Xtreme_2_Coverart.png" alt="Delta Force">
+      <h3>Delta Force</h3>
+      <a class="btn" href="deltaforce.html" target="_blank">Sargyt et</a>
     </div>
-  </main>
 
-  <!-- MODAL -->
-  <div class="modal" id="modal">
-    <div class="sheet">
-      <div class="sheet-header">
-        <div id="m-name" style="font-weight:700"></div>
-        <button class="x" id="m-close">✕</button>
-      </div>
-      <div class="sheet-body">
-        <img id="m-img" src="" alt="">
-        <div>
-          <div id="m-desc" style="color:#cbd5e1"></div>
-          <div class="sheet-actions">
-            <button class="btn" id="m-order">🛒 <span id="t-order-btn">Sargyt et</span></button>
-            <button class="btn" id="m-back">⬅️ <span id="t-back-btn">Yza</span></button>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Genshin_Impact_logo.svg" alt="Genshin Impact">
+      <h3>Genshin Impact</h3>
+      <a class="btn" href="genshin.html" target="_blank">Sargyt et</a>
     </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/oyyA6Dd.png" alt="Arena Breakout">
+      <h3>Arena Breakout</h3>
+      <a class="btn" href="arena.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/1pKIX6x.png" alt="Zepeto">
+      <h3>Zepeto</h3>
+      <a class="btn" href="zepeto.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/ty24pYB.png" alt="Honor of Kings">
+      <h3>Honor of Kings</h3>
+      <a class="btn" href="honor.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/09/Brawl_Stars_logo.png" alt="Brawl Stars">
+      <h3>Brawl Stars (Fast)</h3>
+      <a class="btn" href="brawl-fast.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/zmMJ6wJ.png" alt="MLBB-CDKey">
+      <h3>MLBB-CDKey</h3>
+      <a class="btn" href="mlbb.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/C9fgXyH.png" alt="RU Only">
+      <h3>(RU Only)</h3>
+      <a class="btn" href="ruonly.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/0/09/Brawl_Stars_logo.png" alt="Brawl Stars Proxy">
+      <h3>Brawl Stars (Proxy)</h3>
+      <a class="btn" href="brawl-proxy.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/HVqNmvI.png" alt="Marvel Rivals">
+      <h3>Marvel Rivals</h3>
+      <a class="btn" href="marvel.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/1pKIX6x.png" alt="Zepeto 2">
+      <h3>Zepeto</h3>
+      <a class="btn" href="zepeto2.html" target="_blank">Sargyt et</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.imgur.com/vmFwPjE.png" alt="Tarisland">
+      <h3>Tarisland</h3>
+      <a class="btn" href="tarisland.html" target="_blank">Sargyt et</a>
+    </div>
+
   </div>
 
-<script>
-/* ===============================
-   i18n (TM/RU/EN)
-================================ */
-const I18N = {
-  tk:{ title:"Oýunlar", online:"7/24 onlaýn", safe:"100% Howpsuz", fast:"Tiz",
-       emptyTitle:"Haryt ýok", emptyDesc:"Soňundan goşarys — häzirlikçe boş.",
-       order:"Sargyt et", open:"Gör", back:"Yza",
-       modalDesc:(n)=>`${n} üçin aýratyn sahypa häzirlikçe boş. Soň maglumat we bahalar goşular.` },
-  ru:{ title:"Игры", online:"24/7 онлайн", safe:"100% Безопасно", fast:"Быстро",
-       emptyTitle:"Нет товаров", emptyDesc:"Добавим позже — пока пусто.",
-       order:"Заказать", open:"Открыть", back:"Назад",
-       modalDesc:(n)=>`Страница для ${n} пока пустая. Позже добавим информацию и цены.` },
-  en:{ title:"Games", online:"24/7 online", safe:"100% Safe", fast:"Fast",
-       emptyTitle:"No items", emptyDesc:"We’ll add items later — empty for now.",
-       order:"Order", open:"Open", back:"Back",
-       modalDesc:(n)=>`Detail page for ${n} is a placeholder. We will add info and pricing later.` }
-};
-
-const LS='siteLang';
-function getInitLang(){
-  const q=new URLSearchParams(location.search).get('lang');
-  if(q && ['tk','ru','en'].includes(q)) return q;
-  const ls=localStorage.getItem(LS);
-  return ['tk','ru','en'].includes(ls)?ls:'tk';
-}
-let lang = getInitLang();
-
-function setLang(l){
-  lang=l; localStorage.setItem(LS,l);
-  const t=I18N[l];
-  document.getElementById('t-title').textContent=t.title;
-  document.getElementById('t-online').textContent=t.online;
-  document.getElementById('t-safe').textContent=t.safe;
-  document.getElementById('t-fast').textContent=t.fast;
-  document.getElementById('t-empty-title').textContent=t.emptyTitle;
-  document.getElementById('t-empty-desc').textContent=t.emptyDesc;
-  document.getElementById('t-order-btn').textContent=t.order;
-  document.getElementById('t-back-btn').textContent=t.back;
-  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.lang===l));
-  // Re-render buttons text on cards
-  document.querySelectorAll('[data-i18n-open]').forEach(b=>b.querySelector('span').textContent=t.open);
-  document.querySelectorAll('[data-i18n-order]').forEach(b=>b.querySelector('span').textContent=t.order);
-}
-
-/* ===============================
-   PRODUCTS (12 oyun)
-   Suratlar: placeholder (işläp durýar).
-   Soň hakyky URL bilen çalşyp bilersiň.
-================================ */
-const PRODUCTS = [
-  {id:"pubg-mobile",           name:"PUBG Mobile"},
-  {id:"free-fire",             name:"Free Fire (NonID/VN/IN/TW)"},
-  {id:"delta-force",           name:"Delta Force"},
-  {id:"genshin-impact",        name:"Genshin Impact"},
-  {id:"arena-breakout",        name:"Arena Breakout"},
-  {id:"zepeto",                name:"Zepeto"},
-  {id:"honor-of-kings",        name:"Honor of Kings"},
-  {id:"brawl-stars-fast",      name:"Brawl Stars (Fast..)"},
-  {id:"mlbb-cdkey",            name:"MLBB-CDKey"},
-  {id:"ru-only",               name:"(RU Only)"},
-  {id:"brawl-stars-proxy",     name:"Brawl Stars (Proxy..)"},
-  {id:"marvel-ze-tarisland",   name:"Marvel Rivals Zepeto Tarisland"},
-].map(p=>({
-   ...p,
-   img:`https://via.placeholder.com/600x600.png?text=${encodeURIComponent(p.name)}`
-}));
-
-/* ===============================
-   RENDER
-================================ */
-function el(tag, attrs={}, ...children){
-  const e=document.createElement(tag);
-  for(const [k,v] of Object.entries(attrs)){
-    if(k==='class') e.className=v;
-    else if(k.startsWith('on') && typeof v==='function') e.addEventListener(k.slice(2), v);
-    else if(k==='html') e.innerHTML=v;
-    else e.setAttribute(k,v);
-  }
-  for(const c of children){ if(c!=null) e.append(c.nodeType?c:document.createTextNode(c)); }
-  return e;
-}
-
-function render(){
-  const grid=document.getElementById('grid');
-  const empty=document.getElementById('empty');
-  if(!PRODUCTS.length){ grid.innerHTML=''; empty.style.display='block'; return; }
-  empty.style.display='none';
-  grid.innerHTML='';
-  PRODUCTS.forEach(p=>{
-    const card=el('article',{class:'card'},
-      el('span',{class:'badge'},'-10%'),
-      el('img',{class:'thumb',src:p.img,alt:p.name,loading:'lazy'}),
-      el('div',{class:'body'},
-        el('div',{class:'name'},p.name),
-        el('div',{class:'row'},
-          el('a',{href:'javascript:void(0)',class:'btn', 'data-i18n-open':'1', onclick:()=>openModal(p)},'👁️ ', el('span',{}, I18N[lang].open)),
-          el('a',{href:'javascript:void(0)',class:'btn', 'data-i18n-order':'1', onclick:()=>openModal(p)},'🛒 ', el('span',{}, I18N[lang].order))
-        )
-      )
-    );
-    grid.appendChild(card);
-  });
-}
-
-/* ===============================
-   MODAL
-================================ */
-const modal=document.getElementById('modal');
-const mImg=document.getElementById('m-img');
-const mName=document.getElementById('m-name');
-const mDesc=document.getElementById('m-desc');
-document.getElementById('m-close').onclick=()=>modal.classList.remove('open');
-document.getElementById('m-back').onclick =()=>modal.classList.remove('open');
-document.getElementById('m-order').onclick=()=>alert('Sargyt — placeholder');
-
-function openModal(p){
-  mName.textContent=p.name;
-  mImg.src=p.img; mImg.alt=p.name;
-  mDesc.textContent=I18N[lang].modalDesc(p.name);
-  modal.classList.add('open');
-}
-
-/* ===============================
-   LANG WIRES
-   - localStorage.siteLang ulanýar
-   - ?lang=tk|ru|en hem goldanýar
-================================ */
-document.querySelectorAll('.chip[data-lang]').forEach(b=>{
-  b.addEventListener('click',()=>setLang(b.dataset.lang));
-});
-
-/* init */
-setLang(lang);
-render();
-</script>
 </body>
-</html>
+        </html>
