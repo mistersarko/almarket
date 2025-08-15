@@ -2,112 +2,104 @@
 <html lang="tm">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oýunlar</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f3f4f6;
+      background: #fff;
       margin: 0;
       padding: 20px;
     }
     h1 {
       text-align: center;
-      margin-bottom: 30px;
-      color: #222;
+      margin-bottom: 20px;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
     .card {
-      background: white;
-      border-radius: 12px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 15px;
-      transition: transform 0.2s ease;
+      text-align: center;
+      transition: transform 0.2s;
     }
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
     }
     .card img {
       width: 100%;
-      max-width: 160px;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      height: 150px;
+      object-fit: cover;
     }
     .card h3 {
-      font-size: 1.1em;
-      text-align: center;
-      color: #333;
-      margin-bottom: 10px;
+      margin: 10px 0;
+      font-size: 18px;
     }
-    .btn {
-      background-color: #007bff;
+    .card button {
+      background: #0070f3;
       color: white;
       border: none;
-      padding: 8px 14px;
+      padding: 10px 16px;
+      margin-bottom: 15px;
       border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.95em;
-      transition: background-color 0.2s ease;
+      cursor: pointer;
+      font-size: 14px;
     }
-    .btn:hover {
-      background-color: #0056b3;
+    .card button:hover {
+      background: #005bb5;
     }
   </style>
 </head>
 <body>
 
-  <h1>Oýunlar</h1>
-  <div class="grid">
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/PUBG_logo.svg" alt="PUBG Mobile">
-      <h3>PUBG Mobile</h3>
-      <a href="pubg.html" class="btn">Sargyt et</a>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Free_Fire_logo.png" alt="Free Fire">
-      <h3>Free Fire</h3>
-      <a href="freefire.html" class="btn">Sargyt et</a>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Delta_Force_logo.png" alt="Delta Force">
-      <h3>Delta Force</h3>
-      <a href="deltaforce.html" class="btn">Sargyt et</a>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Genshin_Impact_logo.svg" alt="Genshin Impact">
-      <h3>Genshin Impact</h3>
-      <a href="genshin.html" class="btn">Sargyt et</a>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Arena_Breakout_logo.png" alt="Arena Breakout">
-      <h3>Arena Breakout</h3>
-      <a href="arena.html" class="btn">Sargyt et</a>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Zepeto_logo.png" alt="Zepeto">
-      <h3>Zepeto</h3>
-      <a href="zepeto.html" class="btn">Sargyt et</a>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Honor_of_Kings_logo.png" alt="Honor of Kings">
-      <h3>Honor of Kings</h3>
-      <a href="honor.html" class="btn">Sargyt et</a>
-    </div>
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Brawl_Stars_logo.png" alt="Brawl Stars">
-      <h3>Brawl Stars</h3>
-      <a href="brawl.html" class="btn">Sargyt et</a>
-    </div>
+<h1>Oýunlar</h1>
+<div class="grid">
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/PUBG_Mobile_logo.svg" alt="PUBG Mobile">
+    <h3>PUBG Mobile</h3>
+    <button onclick="window.open('pubg.html', '_blank')">Sargyt et</button>
   </div>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Free_Fire_logo.png" alt="Free Fire">
+    <h3>Free Fire</h3>
+    <button onclick="window.open('freefire.html', '_blank')">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Delta_Force_logo.png" alt="Delta Force">
+    <h3>Delta Force</h3>
+    <button onclick="window.open('deltaforce.html', '_blank')">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/64/Genshin_Impact_logo.svg" alt="Genshin Impact">
+    <h3>Genshin Impact</h3>
+    <button onclick="window.open('genshin.html', '_blank')">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x150?text=Arena+Breakout" alt="Arena Breakout">
+    <h3>Arena Breakout</h3>
+    <button onclick="window.open('arena.html', '_blank')">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x150?text=Zepeto" alt="Zepeto">
+    <h3>Zepeto</h3>
+    <button onclick="window.open('zepeto.html', '_blank')">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x150?text=Honor+of+Kings" alt="Honor of Kings">
+    <h3>Honor of Kings</h3>
+    <button onclick="window.open('honor.html', '_blank')">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x150?text=Brawl+Stars" alt="Brawl Stars">
+    <h3>Brawl Stars</h3>
+    <button onclick="window.open('brawl.html', '_blank')">Sargyt et</button>
+  </div>
+</div>
 
 </body>
 </html>
