@@ -96,152 +96,135 @@
       <h2 id="t-games" style="margin:.2rem 0 1rem">Oýunlar</h2>
 
       <!-- EMPTY PLACEHOLDER -->
-<!-- === GAMES: FIXED TWO-COLUMN GRID === -->
+      <div id="grid" class="grid">
+  <!-- PUBG Mobile -->
+  <div class="product">
+    <img src="images/pubg.jpg" alt="PUBG Mobile" />
+    <h3 id="t-game-pubg">PUBG Mobile</h3>
+    <button class="buy-btn" onclick="window.location.href='pubg.html'">Sargyt et</button>
+  </div>
+
+  <!-- Free Fire -->
+  <div class="product">
+    <img src="images/freefire.jpg" alt="Free Fire" />
+    <h3 id="t-game-freefire">Free Fire (NonID/VN/IN/TW)</h3>
+    <button class="buy-btn" onclick="window.location.href='freefire.html'">Sargyt et</button>
+  </div>
+
+  <!-- Delta Force -->
+  <div class="product">
+    <img src="images/deltaforce.jpg" alt="Delta Force" />
+    <h3 id="t-game-delta">Delta Force</h3>
+    <button class="buy-btn" onclick="window.location.href='deltaforce.html'">Sargyt et</button>
+  </div>
+
+  <!-- Genshin Impact -->
+  <div class="product">
+    <img src="images/genshin.jpg" alt="Genshin Impact" />
+    <h3 id="t-game-genshin">Genshin Impact</h3>
+    <button class="buy-btn" onclick="window.location.href='genshin.html'">Sargyt et</button>
+  </div>
+
+  <!-- Arena Breakout -->
+  <div class="product">
+    <img src="images/arena.jpg" alt="Arena Breakout" />
+    <h3 id="t-game-arena">Arena Breakout</h3>
+    <button class="buy-btn" onclick="window.location.href='arena.html'">Sargyt et</button>
+  </div>
+
+  <!-- Zepeto -->
+  <div class="product">
+    <img src="images/zepeto.jpg" alt="Zepeto" />
+    <h3 id="t-game-zepeto">Zepeto</h3>
+    <button class="buy-btn" onclick="window.location.href='zepeto.html'">Sargyt et</button>
+  </div>
+
+  <!-- Honor of Kings -->
+  <div class="product">
+    <img src="images/honor.jpg" alt="Honor of Kings" />
+    <h3 id="t-game-honor">Honor of Kings</h3>
+    <button class="buy-btn" onclick="window.location.href='honor.html'">Sargyt et</button>
+  </div>
+
+  <!-- Brawl Stars (Fast..) -->
+  <div class="product">
+    <img src="images/brawlfast.jpg" alt="Brawl Stars Fast" />
+    <h3 id="t-game-brawlfast">Brawl Stars (Fast..)</h3>
+    <button class="buy-btn" onclick="window.location.href='brawlfast.html'">Sargyt et</button>
+  </div>
+
+  <!-- MLBB-CDKey -->
+  <div class="product">
+    <img src="images/mlbb.jpg" alt="MLBB-CDKey" />
+    <h3 id="t-game-mlbb">MLBB-CDKey</h3>
+    <button class="buy-btn" onclick="window.location.href='mlbb.html'">Sargyt et</button>
+  </div>
+
+  <!-- RU Only -->
+  <div class="product">
+    <img src="images/ru.jpg" alt="RU Only" />
+    <h3 id="t-game-ru">(RU Only)</h3>
+    <button class="buy-btn" onclick="window.location.href='ru.html'">Sargyt et</button>
+  </div>
+
+  <!-- Brawl Stars (Proxy..) -->
+  <div class="product">
+    <img src="images/brawlproxy.jpg" alt="Brawl Stars Proxy" />
+    <h3 id="t-game-brawlproxy">Brawl Stars (Proxy..)</h3>
+    <button class="buy-btn" onclick="window.location.href='brawlproxy.html'">Sargyt et</button>
+  </div>
+
+  <!-- Marvel Rivals -->
+  <div class="product">
+    <img src="images/marvel.jpg" alt="Marvel Rivals" />
+    <h3 id="t-game-marvel">Marvel Rivals</h3>
+    <button class="buy-btn" onclick="window.location.href='marvel.html'">Sargyt et</button>
+  </div>
+
+  <!-- Tarisland -->
+  <div class="product">
+    <img src="images/tarisland.jpg" alt="Tarisland" />
+    <h3 id="t-game-tarisland">Tarisland</h3>
+    <button class="buy-btn" onclick="window.location.href='tarisland.html'">Sargyt et</button>
+  </div>
+</div>
+
 <style>
-  body {
-    background-color: #0d1b2a;
-    font-family: sans-serif;
-    color: white;
-    margin: 0;
-    padding: 0;
-  }
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    padding: 15px;
+    gap: 20px;
   }
-  .card {
-    background-color: #1b263b;
+  .product {
+    background: #fff;
     border-radius: 12px;
-    overflow: hidden;
+    padding: 15px;
     text-align: center;
-    padding-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
-  .card img {
+  .product img {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
-  }
-  .card h3 {
-    font-size: 1.1em;
-    margin: 10px 0;
-  }
-  .btn {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 15px;
-    border: none;
     border-radius: 8px;
+  }
+  .product h3 {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  .buy-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 16px;
   }
-</style>
-
-<div class="grid">
-  <div class="card">
-    <img src="img/pubg.png" alt="PUBG Mobile">
-    <h3>PUBG Mobile</h3>
-    <button class="btn" onclick="window.location.href='sargyt.html'">Sargyt et</button>
-  </div>
-  <div class="card">
-    <img src="img/freefire.png" alt="Free Fire">
-    <h3>Free Fire</h3>
-    <button class="btn" onclick="window.location.href='sargyt.html'">Sargyt et</button>
-  </div>
-  <!-- galan oýunlary hem şu formatda goş -->
-</div>
-
-<script>
-  /* ——— OÝUNLAR ———
-     Button tekstini diller bilen sinhronlamak üçin 'data-i18n-btn' goýýarys.
-     Suraty açylmasa, 'onerror' bilen fallback goýulýar.
-  */
-  const PRODUCTS = [
-    {id:"pubg",        name:"PUBG Mobile",
-      img:"https://upload.wikimedia.org/wikipedia/commons/8/82/PUBG_Mobile_logo.svg",
-      url:"oyunlar/pubg.html"},
-    {id:"freefire",    name:"Free Fire (NonID/VN/IN/TW)",
-      img:"https://upload.wikimedia.org/wikipedia/commons/1/1f/Free_Fire_logo.png",
-      url:"oyunlar/freefire.html"},
-    {id:"delta",       name:"Delta Force",
-      img:"https://upload.wikimedia.org/wikipedia/en/f/fd/Delta_Force_logo.png",
-      url:"oyunlar/deltaforce.html"},
-    {id:"genshin",     name:"Genshin Impact",
-      img:"https://upload.wikimedia.org/wikipedia/commons/e/e0/Genshin_Impact_logo.svg",
-      url:"oyunlar/genshin.html"},
-    {id:"arena",       name:"Arena Breakout",
-      img:"https://upload.wikimedia.org/wikipedia/commons/0/0a/Placeholder.png",
-      url:"oyunlar/arena.html"},
-    {id:"zepeto",      name:"Zepeto",
-      img:"https://upload.wikimedia.org/wikipedia/commons/1/1d/Zepeto_logo.png",
-      url:"oyunlar/zepeto.html"},
-    {id:"honor",       name:"Honor of Kings",
-      img:"https://upload.wikimedia.org/wikipedia/commons/a/a5/Honor_of_Kings_logo.png",
-      url:"oyunlar/honor.html"},
-    {id:"brawlfast",   name:"Brawl Stars (Fast..)",
-      img:"https://upload.wikimedia.org/wikipedia/en/4/4b/Brawl_Stars_logo.png",
-      url:"oyunlar/brawlfast.html"},
-    {id:"mlbbcd",      name:"MLBB-CDKey",
-      img:"https://upload.wikimedia.org/wikipedia/en/2/27/Mobile_Legends_Bang_Bang_logo.png",
-      url:"oyunlar/mlbb.html"},
-    {id:"ruonly",      name:"(RU Only)",
-      img:"https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg",
-      url:"oyunlar/ruonly.html"},
-    {id:"brawlproxy",  name:"Brawl Stars (Proxy..)",
-      img:"https://upload.wikimedia.org/wikipedia/en/4/4b/Brawl_Stars_logo.png",
-      url:"oyunlar/brawlproxy.html"},
-    {id:"marveltari",  name:"Marvel Rivals / Tarisland",
-      img:"https://upload.wikimedia.org/wikipedia/commons/0/0a/Placeholder.png",
-      url:"oyunlar/marvel.html"}
-  ];
-
-  function fallbackImg(imgEl, text){
-    imgEl.onerror=null;
-    imgEl.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=60";
-    imgEl.alt = text;
+  .buy-btn:hover {
+    background: #0056b3;
   }
-
-  function renderGames(){
-    const grid = document.getElementById('grid');
-    grid.innerHTML = '';
-    PRODUCTS.forEach(p=>{
-      const card = document.createElement('article');
-      card.className = 'gm-card';
-      card.innerHTML = `
-        <img class="gm-img" src="${p.img}" alt="${p.name}">
-        <h3 class="gm-title">${p.name}</h3>
-        <a class="gm-btn" data-i18n-btn href="${p.url}" target="_blank" rel="noopener">
-          🛒 <span>Sargyt et</span>
-        </a>`;
-      const img = card.querySelector('img');
-      img.onerror = () => fallbackImg(img, p.name);
-      grid.appendChild(card);
-    });
-  }
-
-  // —— DILLER BILEN SINHRON ——
-  // Eger öňki index.js-de setLang bar bolsa, şu “observer” düwmeleri hem täzeler.
-  (function hookI18N(){
-    const orig = window.setLang;
-    if(typeof orig === 'function'){
-      window.setLang = function(l){
-        orig(l);
-        try{
-          const dict = {
-            tm:"Sargyt et", ru:"Заказать", en:"Order"
-          };
-          document.querySelectorAll('[data-i18n-btn] span')
-            .forEach(s=>s.textContent = dict[l] || dict.tm);
-        }catch(e){}
-      };
-      // bir gezek çagyryp, bar bolan dilde düwmeleri täzeden ýaz
-      const l = localStorage.getItem('siteLang') || 'tm';
-      window.setLang(l);
-    }
-  })();
-
-  renderGames();
-</script>
+      </style>
       </div>
 
       <!-- PRODUCTS (add later) -->
