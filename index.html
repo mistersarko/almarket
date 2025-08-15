@@ -4,207 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Market</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background: #111;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      background: white;
-      padding: 15px;
-    }
-    .feature {
-      text-align: center;
-      font-size: 14px;
-    }
-    .feature-icon {
-      font-size: 24px;
-      margin-bottom: 5px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 15px;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-    .card:hover {
-      transform: scale(1.03);
-    }
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-    .card-title {
-      font-weight: bold;
-      padding: 10px;
-    }
-    .btn {
-      display: block;
-      background: #28a745;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      font-size: 14px;
-      border-radius: 0 0 10px 10px;
-    }
-    .btn:hover {
-      background: #218838;
-    }
-    .lang-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    .lang-switch button {
-      background: #fff;
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-      cursor: pointer;
-      margin-left: 5px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>Game Market</header>
+  <!-- Header -->
+  <header>
+    <h1 id="title">Game Market</h1>
+    <div class="lang-buttons">
+      <button onclick="setLanguage('tm')">TM</button>
+      <button onclick="setLanguage('ru')">RU</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </div>
+  </header>
 
-<div class="lang-switch">
-  <button onclick="setLang('tm')">TM</button>
-  <button onclick="setLang('ru')">RU</button>
-  <button onclick="setLang('en')">EN</button>
-</div>
+  <!-- Info Bar -->
+  <section class="info-bar">
+    <div>
+      <img src="img/clock.png" alt="">
+      <span id="info1">7/24 hyzmat</span>
+    </div>
+    <div>
+      <img src="img/lock.png" alt="">
+      <span id="info2">100% howpsuz</span>
+    </div>
+    <div>
+      <img src="img/flash.png" alt="">
+      <span id="info3">Tiz eltip berme</span>
+    </div>
+  </section>
 
-<div class="features">
-  <div class="feature">
-    <div class="feature-icon">🕒</div>
-    <div id="f1">7/24 hyzmat</div>
-  </div>
-  <div class="feature">
-    <div class="feature-icon">🔒</div>
-    <div id="f2">100% howpsuz</div>
-  </div>
-  <div class="feature">
-    <div class="feature-icon">⚡</div>
-    <div id="f3">Tiz eltip berme</div>
-  </div>
-</div>
+  <!-- Games -->
+  <main class="games-grid" id="games-list">
+    <!-- Games will be inserted here by JS -->
+  </main>
 
-<div id="grid" class="grid">
-  <div class="card">
-    <img src="img/pubg.png" alt="PUBG Mobile">
-    <div class="card-title">PUBG Mobile</div>
-    <a href="pubg.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/freefire.png" alt="Free Fire">
-    <div class="card-title">Free Fire (NonID/VN/IN/TW)</div>
-    <a href="freefire.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/deltaforce.png" alt="Delta Force">
-    <div class="card-title">Delta Force</div>
-    <a href="deltaforce.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/genshin.png" alt="Genshin Impact">
-    <div class="card-title">Genshin Impact</div>
-    <a href="genshin.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/arena.png" alt="Arena Breakout">
-    <div class="card-title">Arena Breakout</div>
-    <a href="arena.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/zepeto.png" alt="Zepeto">
-    <div class="card-title">Zepeto</div>
-    <a href="zepeto.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/honorofkings.png" alt="Honor of Kings">
-    <div class="card-title">Honor of Kings</div>
-    <a href="honor.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/brawlstarsfast.png" alt="Brawl Stars Fast">
-    <div class="card-title">Brawl Stars (Fast)</div>
-    <a href="brawlfast.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/mlbbcdkey.png" alt="MLBB CDKey">
-    <div class="card-title">MLBB-CDKey</div>
-    <a href="mlbb.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/ruonly.png" alt="RU Only">
-    <div class="card-title">(RU Only)</div>
-    <a href="ruonly.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/brawlproxy.png" alt="Brawl Stars Proxy">
-    <div class="card-title">Brawl Stars (Proxy)</div>
-    <a href="brawlproxy.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-  <div class="card">
-    <img src="img/marvel.png" alt="Marvel Rivals">
-    <div class="card-title">Marvel Rivals Zepeto Tarisland</div>
-    <a href="marvel.html" class="btn" id="btn-text">Sargyt et</a>
-  </div>
-</div>
-
-<script>
-  const translations = {
-    tm: {
-      f1: "7/24 hyzmat",
-      f2: "100% howpsuz",
-      f3: "Tiz eltip berme",
-      btn: "Sargyt et"
-    },
-    ru: {
-      f1: "Поддержка 24/7",
-      f2: "100% безопасность",
-      f3: "Быстрая доставка",
-      btn: "Заказать"
-    },
-    en: {
-      f1: "24/7 Support",
-      f2: "100% Secure",
-      f3: "Fast Delivery",
-      btn: "Order Now"
-    }
-  };
-
-  function setLang(lang) {
-    document.getElementById('f1').textContent = translations[lang].f1;
-    document.getElementById('f2').textContent = translations[lang].f2;
-    document.getElementById('f3').textContent = translations[lang].f3;
-    document.querySelectorAll('#btn-text').forEach(btn => {
-      btn.textContent = translations[lang].btn;
-    });
-  }
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
