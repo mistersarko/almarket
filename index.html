@@ -1,161 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Game Market</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #0f172a;
-            color: white;
-        }
-        header {
-            background-color: #1e293b;
-            padding: 10px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-        }
-        .languages {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 8px;
-            background-color: #0f172a;
-        }
-        .languages button {
-            background: #1e293b;
-            color: white;
-            border: none;
-            padding: 5px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .badges {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 8px;
-        }
-        .badge {
-            background-color: #1e293b;
-            padding: 6px 12px;
-            border-radius: 12px;
-            font-size: 14px;
-        }
-        .games {
-            padding: 10px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        .card {
-            background-color: #1e293b;
-            border-radius: 12px;
-            padding: 10px;
-            text-align: center;
-        }
-        .card img {
-            width: 100%;
-            height: 100px;
-            border-radius: 8px;
-            object-fit: cover;
-            background-color: #0f172a;
-        }
-        .card-title {
-            font-weight: bold;
-            margin: 8px 0;
-        }
-        .btn {
-            background-color: #22c55e;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #1e293b;
-            display: flex;
-            justify-content: space-around;
-            padding: 8px 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAME MARKET</title>
+<meta name="color-scheme" content="dark">
+<style>
+  :root{
+    --bg:#0b1220; --panel:#0f172a; --ink:#e5e7eb; --muted:#9aa4b2;
+    --line:#1f2937; --accent:#3b82f6; --ok:#22c55e;
+    --radius:16px; --shadow:0 12px 28px rgba(2,6,23,.45);
+  }
+  *{box-sizing:border-box}  body{margin:0;background:#0a0f1a;color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+
+  /* topbar */
+  .topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:.8rem;
+    padding:.8rem 1rem;background:rgba(15,23,42,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)}
+  .logo{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);box-shadow:var(--shadow)}
+  .brand{font-weight:800;letter-spacing:.2px}
+  .langs{margin-left:auto;display:flex;gap:.4rem}
+  .chip{border:1px solid #334155;background:transparent;color:#cbd5e1;
+    padding:.3rem .7rem;border-radius:999px;cursor:pointer;font-weight:600}
+  .chip.active{background:#2563eb;border-color:#2563eb;color:#fff}
+
+  /* badges */
+  .badges{display:flex;gap:.8rem;overflow:auto;padding:.8rem 1rem}
+  .pill{display:flex;align-items:center;gap:.5rem;padding:.45rem .8rem;border-radius:999px;
+    background:#0b1220;border:1px solid var(--line);white-space:nowrap;color:#d1d5db}
+
+  /* section title */
+  h2{margin:1rem 1rem .6rem;font-size:1.6rem}
+
+  /* grid + card (2 hatar) */
+  .grid{display:grid;gap:1rem;padding:0 1rem 6rem;grid-template-columns:repeat(2,1fr)}
+  @media(min-width:780px){ .grid{grid-template-columns:repeat(4,1fr)} }
+
+  .card{border:1px solid var(--line);background:#0b1220;border-radius:18px;overflow:hidden;
+    box-shadow:0 2px 0 #0b1220}
+  .thumb{width:100%;aspect-ratio:16/11;object-fit:cover;background:#111827;display:block}
+  .content{padding:.8rem}
+  .name{font-weight:800;min-height:2.4em;line-height:1.2;margin:.2rem 0 .8rem}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;
+    padding:.7rem .9rem;border-radius:12px;background:var(--ok);color:#06210f;
+    font-weight:800;border:none;cursor:pointer}
+  .btn:hover{filter:brightness(1.05)}
+  .thumb[alt=""]{opacity:.95}
+  .thumb.error{object-fit:contain;filter:grayscale(.2);background:#0f172a}
+
+  /* bottom nav */
+  .bottom{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(15,23,42,.96);
+    border-top:1px solid var(--line);backdrop-filter:blur(8px)}
+  .tabs{display:grid;grid-template-columns:repeat(3,1fr)}
+  .tab{padding:.7rem .5rem;text-align:center;color:#cbd5e1;cursor:pointer}
+  .tab span{display:block;font-size:.82rem;margin-top:.25rem}
+  .tab.active{color:#fff;background:linear-gradient(180deg,rgba(59,130,246,.18),transparent)}
+</style>
 </head>
 <body>
 
-<header>
-    🎮 Game Market
+<header class="topbar">
+  <div class="logo">🎮</div>
+  <div class="brand" id="t-title">GAME MARKET</div>
+  <div class="langs">
+    <button class="chip" data-lang="tm">TM</button>
+    <button class="chip" data-lang="ru">RU</button>
+    <button class="chip active" data-lang="en">EN</button>
+  </div>
 </header>
 
-<div class="languages">
-    <button>TM</button>
-    <button>RU</button>
-    <button>EN</button>
-</div>
-
+<!-- badges -->
 <div class="badges">
-    <div class="badge">🕒 7/24 onlaýn</div>
-    <div class="badge">🛡 100% Howpsuz</div>
-    <div class="badge">⚡ Tiz eltib berme</div>
+  <div class="pill">🕘 <span id="t-247">7/24 onlaýn</span></div>
+  <div class="pill">🛡️ <span id="t-safe">100% Howpsuz</span></div>
+  <div class="pill">⚡ <span id="t-fast">Tiz eltip berme</span></div>
 </div>
 
-<h2 style="padding-left: 10px;">Oýunlar</h2>
+<!-- games -->
+<h2 id="t-games">Oýunlar</h2>
+<div id="grid" class="grid"></div>
 
-<div class="games">
-    <div class="card">
-        <img src="pubg.jpg" alt="PUBG Mobile">
-        <div class="card-title">PUBG Mobile</div>
-        <button class="btn">Sargyt et</button>
-    </div>
-    <div class="card">
-        <img src="freefire.jpg" alt="Free Fire">
-        <div class="card-title">Free Fire</div>
-        <button class="btn">Sargyt et</button>
-    </div>
-    <div class="card">
-        <img src="mobilelegends.jpg" alt="Mobile Legends">
-        <div class="card-title">Mobile Legends</div>
-        <button class="btn">Sargyt et</button>
-    </div>
-    <div class="card">
-        <img src="valorant.jpg" alt="Valorant">
-        <div class="card-title">Valorant</div>
-        <button class="btn">Sargyt et</button>
-    </div>
-</div>
-
-<nav>
-    <a href="#">
-        🎮
-        <span>Oýunlar</span>
-    </a>
-    <a href="#">
-        📦
-        <span>Sargytlar</span>
-    </a>
-    <a href="#">
-        📊
-        <span>Analiz</span>
-    </a>
+<!-- bottom nav -->
+<nav class="bottom">
+  <div class="tabs">
+    <div class="tab active" data-go="games">🎮 <span id="n-games">Oýunlar</span></div>
+    <div class="tab" data-go="orders">📦 <span id="n-orders">Sargytlar</span></div>
+    <div class="tab" data-go="analytics">📊 <span id="n-analytics">Analiz</span></div>
+  </div>
 </nav>
 
+<script>
+/* === I18N === */
+const T = {
+  tm:{ title:"GAME MARKET", b247:"7/24 onlaýn", safe:"100% Howpsuz", fast:"Tiz eltip berme",
+       games:"Oýunlar", order:"Sargyt et", nGames:"Oýunlar", nOrders:"Sargytlar", nAnalytics:"Analiz" },
+  ru:{ title:"ИГРОВОЙ РЫНОК", b247:"Круглосуточно", safe:"100% Безопасно", fast:"Быстрая доставка",
+       games:"Игры", order:"Заказать", nGames:"Игры", nOrders:"Заказы", nAnalytics:"Аналитика" },
+  en:{ title:"GAME MARKET", b247:"24/7 online", safe:"100% Safe", fast:"Fast delivery",
+       games:"Games", order:"Order", nGames:"Games", nOrders:"Orders", nAnalytics:"Analytics" }
+};
+const LS='gm_lang';
+let lang = localStorage.getItem(LS) || 'tm';
+
+function applyLang(l){
+  lang=l; localStorage.setItem(LS,l); const d=T[l];
+  document.getElementById('t-title').textContent = d.title;
+  document.getElementById('t-247').textContent   = d.b247;
+  document.getElementById('t-safe').textContent  = d.safe;
+  document.getElementById('t-fast').textContent  = d.fast;
+  document.getElementById('t-games').textContent = d.games;
+  document.getElementById('n-games').textContent = d.nGames;
+  document.getElementById('n-orders').textContent= d.nOrders;
+  document.getElementById('n-analytics').textContent= d.nAnalytics;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.lang===l));
+  // update all buttons text
+  document.querySelectorAll('[data-btn]').forEach(b=>b.textContent=d.order);
+}
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>applyLang(c.dataset.lang)));
+
+/* === DATA (12 oyun) === */
+const GAMES = [
+  {id:'pubg', name:'PUBG Mobile', img:'img/pubg.png'},
+  {id:'free-fire', name:'Free Fire (NonID/VN/IN/TW)', img:'img/freefire.png'},
+  {id:'delta-force', name:'Delta Force', img:'img/deltaforce.png'},
+  {id:'genshin', name:'Genshin Impact', img:'img/genshin.png'},
+  {id:'arena-breakout', name:'Arena Breakout', img:'img/arenabreakout.png'},
+  {id:'zepeto', name:'Zepeto', img:'img/zepeto.png'},
+  {id:'honor-of-kings', name:'Honor of Kings', img:'img/hok.png'},
+  {id:'brawl-fast', name:'Brawl Stars (Fast..)', img:'img/brawl-fast.png'},
+  {id:'mlbb-cdkey', name:'MLBB-CDKey', img:'img/mlbb-cdkey.png'},
+  {id:'mlbb-ru', name:'(RU Only)', img:'img/mlbb-ru.png'},
+  {id:'brawl-proxy', name:'Brawl Stars (Proxy..)', img:'img/brawl-proxy.png'},
+  {id:'marvel-rivals', name:'Marvel Rivals / Tarisland / Zepeto', img:'img/marvelrivals.png'}
+];
+
+/* === RENDER === */
+function fallbackImg(e){
+  e.target.classList.add('error');
+  e.target.src='data:image/svg+xml;utf8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440">
+      <rect width="100%" height="100%" fill="#0f172a"/>
+      <text x="50%" y="52%" text-anchor="middle" fill="#9aa4b2" font-family="Arial" font-size="28">No image</text>
+    </svg>`);
+}
+
+function card(g){
+  const el=document.createElement('article'); el.className='card';
+  el.innerHTML = `
+    <img class="thumb" src="${g.img}" alt="" onerror="(${fallbackImg})(event)">
+    <div class="content">
+      <div class="name">${g.name}</div>
+      <button class="btn" data-id="${g.id}" data-btn></button>
+    </div>`;
+  el.querySelector('.btn').addEventListener('click',()=>{
+    // täze sahypa – soň doldurarsyňyz
+    window.location.href = 'order.html?g=' + encodeURIComponent(g.id);
+  });
+  return el;
+}
+
+function render(){
+  const grid=document.getElementById('grid'); grid.innerHTML='';
+  GAMES.forEach(g=>grid.appendChild(card(g)));
+  applyLang(lang);
+}
+render();
+
+/* === Bottom nav (placeholder sahypalar) === */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    // Häzirlikçe diňe "Oýunlar" bar — galanlary soň doldurarsyňyz
+    if(t.dataset.go!=='games'){ alert('Bu bölüm soň doldurylar.'); }
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+</script>
 </body>
 </html>
