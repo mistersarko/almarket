@@ -95,126 +95,110 @@
     <section id="page-games" class="section active">
       <h2 id="t-games" style="margin:.2rem 0 1rem">Oýunlar</h2>
 
-<!-- GAME LIST -->
-<div id="grid" class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 20px;">
-  
-  <!-- Game Card -->
-  <div class="game-card" style="background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 15px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/PUBG_Mobile_logo.png" alt="PUBG Mobile" style="width:100%; height:140px; object-fit: contain; margin-bottom: 10px;">
-    <h3 style="font-size: 18px; text-align: center;">PUBG Mobile</h3>
-    <a href="pubg.html" style="margin-top: auto; background:#007bff; color:#fff; padding:8px 14px; border-radius:8px; text-decoration:none;">Sargyt et</a>
-  </div>
+      <!-- EMPTY PLACEHOLDER -->
+      <!-- GAME LIST (full, 2-row friendly, clean buttons, working images) -->
+<div id="grid" class="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;padding:10px;align-items:start">
 
-  <div class="game-card" style="background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 15px;">
-    <img src="https://seeklogo.com/images/F/free-fire-logo-065F4BF177-seeklogo.com.png" alt="Free Fire" style="width:100%; height:140px; object-fit: contain; margin-bottom: 10px;">
-    <h3 style="font-size: 18px; text-align: center;">Free Fire (NonID/VN/IN/TW)</h3>
-    <a href="freefire.html" style="margin-top: auto; background:#007bff; color:#fff; padding:8px 14px; border-radius:8px; text-decoration:none;">Sargyt et</a>
-  </div>
+  <!-- CARD STYLE (inline, no external deps) -->
+  <style>
+    .gm-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.06);padding:12px;text-align:center;display:flex;flex-direction:column;gap:10px}
+    .gm-img{width:100%;height:130px;object-fit:contain;background:#f8fafc;border-radius:8px}
+    .gm-title{font-weight:700;font-size:16px;margin:0 0 4px;color:#111827}
+    .gm-btn{display:inline-block;background:#3b82f6;color:#fff;padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;transition:.15s}
+    .gm-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(59,130,246,.25)}
+  </style>
 
-  <div class="game-card" style="background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 15px;">
-    <img src="https://upload.wikimedia.org/wikipedia/en/f/fd/Delta_Force_logo.png" alt="Delta Force" style="width:100%; height:140px; object-fit: contain; margin-bottom: 10px;">
-    <h3 style="font-size: 18px; text-align: center;">Delta Force</h3>
-    <a href="deltaforce.html" style="margin-top: auto; background:#007bff; color:#fff; padding:8px 14px; border-radius:8px; text-decoration:none;">Sargyt et</a>
-  </div>
-
-  <div class="game-card" style="background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 15px;">
-    <img src="https://upload.wikimedia.org/wikipedia/en/7/73/Genshin_Impact_logo.svg" alt="Genshin Impact" style="width:100%; height:140px; object-fit: contain; margin-bottom: 10px;">
-    <h3 style="font-size: 18px; text-align: center;">Genshin Impact</h3>
-    <a href="genshin.html" style="margin-top: auto; background:#007bff; color:#fff; padding:8px 14px; border-radius:8px; text-decoration:none;">Sargyt et</a>
-  </div>
-
-  <!-- Şu görnüşde galan oýunlary hem goýup bilerin -->
-</div>
   <!-- 1. PUBG Mobile -->
-  <div class="item">
-    <img src="https://upload.wikimedia.org/wikipedia/en/2/26/PUBG_Mobile_logo.jpg" alt="PUBG Mobile">
-    <h3>PUBG Mobile</h3>
-    <button onclick="location.href='oyunlar/pubg.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/8/82/PUBG_Mobile_logo.svg" alt="PUBG Mobile" onerror="this.src='https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">PUBG Mobile</h3>
+    <a class="gm-btn" href="oyunlar/pubg.html" target="_blank">Sargyt et</a>
   </div>
 
-  <!-- 2. Free Fire -->
-  <div class="item">
-    <img src="https://upload.wikimedia.org/wikipedia/en/3/34/Free_Fire_Logo.png" alt="Free Fire">
-    <h3>Free Fire (NonID/VN/IN/TW)</h3>
-    <button onclick="location.href='oyunlar/freefire.html'">Sargyt et</button>
+  <!-- 2. Free Fire (NonID/VN/IN/TW) -->
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Free_Fire_logo.png" alt="Free Fire" onerror="this.src='https://images.unsplash.com/photo-1520975922284-5f18a6f3f238?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Free Fire (NonID/VN/IN/TW)</h3>
+    <a class="gm-btn" href="oyunlar/freefire.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 3. Delta Force -->
-  <div class="item">
-    <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Delta_Force_logo.png" alt="Delta Force">
-    <h3>Delta Force</h3>
-    <button onclick="location.href='oyunlar/deltaforce.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/en/f/fd/Delta_Force_logo.png" alt="Delta Force" onerror="this.src='https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Delta Force</h3>
+    <a class="gm-btn" href="oyunlar/deltaforce.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 4. Genshin Impact -->
-  <div class="item">
-    <img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Genshin_Impact_logo.svg" alt="Genshin Impact">
-    <h3>Genshin Impact</h3>
-    <button onclick="location.href='oyunlar/genshin.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Genshin_Impact_logo.svg" alt="Genshin Impact" onerror="this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Genshin Impact</h3>
+    <a class="gm-btn" href="oyunlar/genshin.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 5. Arena Breakout -->
-  <div class="item">
-    <img src="https://i.imgur.com/kBNZywr.png" alt="Arena Breakout">
-    <h3>Arena Breakout</h3>
-    <button onclick="location.href='oyunlar/arena.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Placeholder.png" alt="Arena Breakout" onerror="this.src='https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Arena Breakout</h3>
+    <a class="gm-btn" href="oyunlar/arena.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 6. Zepeto -->
-  <div class="item">
-    <img src="https://i.imgur.com/3S29TnN.png" alt="Zepeto">
-    <h3>Zepeto</h3>
-    <button onclick="location.href='oyunlar/zepeto.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Zepeto_logo.png" alt="Zepeto" onerror="this.src='https://images.unsplash.com/photo-1520974722070-364a43a99dcb?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Zepeto</h3>
+    <a class="gm-btn" href="oyunlar/zepeto.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 7. Honor of Kings -->
-  <div class="item">
-    <img src="https://i.imgur.com/YaM5HLN.png" alt="Honor of Kings">
-    <h3>Honor of Kings</h3>
-    <button onclick="location.href='oyunlar/honor.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Honor_of_Kings_logo.png" alt="Honor of Kings" onerror="this.src='https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Honor of Kings</h3>
+    <a class="gm-btn" href="oyunlar/honor.html" target="_blank">Sargyt et</a>
   </div>
 
-  <!-- 8. Brawl Stars (Fast) -->
-  <div class="item">
-    <img src="https://i.imgur.com/0h9SK5t.png" alt="Brawl Stars Fast">
-    <h3>Brawl Stars (Fast)</h3>
-    <button onclick="location.href='oyunlar/brawlfast.html'">Sargyt et</button>
+  <!-- 8. Brawl Stars (Fast..) -->
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/en/4/4b/Brawl_Stars_logo.png" alt="Brawl Stars" onerror="this.src='https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Brawl Stars (Fast..)</h3>
+    <a class="gm-btn" href="oyunlar/brawlfast.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 9. MLBB-CDKey -->
-  <div class="item">
-    <img src="https://i.imgur.com/6G6zZKo.png" alt="MLBB-CDKey">
-    <h3>MLBB-CDKey</h3>
-    <button onclick="location.href='oyunlar/mlbb.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/en/2/27/Mobile_Legends_Bang_Bang_logo.png" alt="MLBB" onerror="this.src='https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">MLBB-CDKey</h3>
+    <a class="gm-btn" href="oyunlar/mlbb.html" target="_blank">Sargyt et</a>
   </div>
 
-  <!-- 10. RU Only -->
-  <div class="item">
-    <img src="https://i.imgur.com/jj3n2Wb.png" alt="RU Only">
-    <h3>(RU Only)</h3>
-    <button onclick="location.href='oyunlar/ru.html'">Sargyt et</button>
+  <!-- 10. (RU Only) -->
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Placeholder.png" alt="RU Only" onerror="this.src='https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">(RU Only)</h3>
+    <a class="gm-btn" href="oyunlar/ruonly.html" target="_blank">Sargyt et</a>
   </div>
 
-  <!-- 11. Brawl Stars (Proxy) -->
-  <div class="item">
-    <img src="https://i.imgur.com/sgG9ghL.png" alt="Brawl Stars Proxy">
-    <h3>Brawl Stars (Proxy)</h3>
-    <button onclick="location.href='oyunlar/brawlproxy.html'">Sargyt et</button>
+  <!-- 11. Brawl Stars (Proxy..) -->
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/en/4/4b/Brawl_Stars_logo.png" alt="Brawl Stars Proxy" onerror="this.src='https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Brawl Stars (Proxy..)</h3>
+    <a class="gm-btn" href="oyunlar/brawlproxy.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 12. Marvel Rivals -->
-  <div class="item">
-    <img src="https://i.imgur.com/8XcNUlQ.png" alt="Marvel Rivals">
-    <h3>Marvel Rivals</h3>
-    <button onclick="location.href='oyunlar/marvel.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Placeholder.png" alt="Marvel Rivals" onerror="this.src='https://images.unsplash.com/photo-1516912481808-3406841bd33c?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Marvel Rivals</h3>
+    <a class="gm-btn" href="oyunlar/marvel.html" target="_blank">Sargyt et</a>
   </div>
 
   <!-- 13. Tarisland -->
-  <div class="item">
-    <img src="https://i.imgur.com/w7yqvQJ.png" alt="Tarisland">
-    <h3>Tarisland</h3>
-    <button onclick="location.href='oyunlar/tarisland.html'">Sargyt et</button>
+  <div class="gm-card">
+    <img class="gm-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Placeholder.png" alt="Tarisland" onerror="this.src='https://images.unsplash.com/photo-1520975922284-5f18a6f3f238?q=80&w=600&auto=format&fit=crop'">
+    <h3 class="gm-title">Tarisland</h3>
+    <a class="gm-btn" href="oyunlar/tarisland.html" target="_blank">Sargyt et</a>
   </div>
+
 </div>
 
       <!-- PRODUCTS (add later) -->
