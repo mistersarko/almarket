@@ -1,139 +1,161 @@
 <!DOCTYPE html>
-<html lang="tm">
+<html lang="tk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Market</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0d1117;
-      color: white;
-      padding-bottom: 60px; /* aşaky menýu üçin ýer */
-    }
-
-    header {
-      background-color: #161b22;
-      padding: 15px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 15px;
-    }
-
-    .game-card {
-      background-color: #1f2937;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      padding-bottom: 10px;
-    }
-
-    .game-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .game-card h3 {
-      font-size: 18px;
-      margin: 8px 0;
-      color: white;
-    }
-
-    .game-card button {
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #161b22;
-      display: flex;
-      justify-content: space-around;
-      padding: 10px 0;
-      border-top: 1px solid #222;
-      z-index: 1000;
-    }
-
-    .bottom-nav a {
-      text-decoration: none;
-      color: #bbb;
-      font-size: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: color 0.2s;
-    }
-
-    .bottom-nav a.active {
-      color: #4caf50;
-    }
-
-    .bottom-nav i {
-      font-size: 20px;
-      margin-bottom: 3px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Game Market</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: white;
+        }
+        header {
+            background-color: #1e293b;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 8px;
+            background-color: #0f172a;
+        }
+        .languages button {
+            background: #1e293b;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 8px;
+        }
+        .badge {
+            background-color: #1e293b;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+        .games {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .card {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            background-color: #0f172a;
+        }
+        .card-title {
+            font-weight: bold;
+            margin: 8px 0;
+        }
+        .btn {
+            background-color: #22c55e;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #1e293b;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
-<header>🎮 Game Market</header>
+<header>
+    🎮 Game Market
+</header>
 
-<div class="grid">
-  <div class="game-card">
-    <img src="img/pubg.png" alt="PUBG">
-    <h3>PUBG Mobile</h3>
-    <button onclick="location.href='sargyt.html'">Sargyt et</button>
-  </div>
-  <div class="game-card">
-    <img src="img/freefire.png" alt="Free Fire">
-    <h3>Free Fire</h3>
-    <button onclick="location.href='sargyt.html'">Sargyt et</button>
-  </div>
-  <div class="game-card">
-    <img src="img/mlbb.png" alt="Mobile Legends">
-    <h3>Mobile Legends</h3>
-    <button onclick="location.href='sargyt.html'">Sargyt et</button>
-  </div>
-  <div class="game-card">
-    <img src="img/valorant.png" alt="Valorant">
-    <h3>Valorant</h3>
-    <button onclick="location.href='sargyt.html'">Sargyt et</button>
-  </div>
+<div class="languages">
+    <button>TM</button>
+    <button>RU</button>
+    <button>EN</button>
 </div>
 
-<div class="bottom-nav">
-  <a href="index.html" class="active">
-    <i class="fas fa-gamepad"></i>
-    Oýunlar
-  </a>
-  <a href="sargytlar.html">
-    <i class="fas fa-box"></i>
-    Sargytlar
-  </a>
-  <a href="analiz.html">
-    <i class="fas fa-chart-bar"></i>
-    Analiz
-  </a>
+<div class="badges">
+    <div class="badge">🕒 7/24 onlaýn</div>
+    <div class="badge">🛡 100% Howpsuz</div>
+    <div class="badge">⚡ Tiz eltib berme</div>
 </div>
+
+<h2 style="padding-left: 10px;">Oýunlar</h2>
+
+<div class="games">
+    <div class="card">
+        <img src="pubg.jpg" alt="PUBG Mobile">
+        <div class="card-title">PUBG Mobile</div>
+        <button class="btn">Sargyt et</button>
+    </div>
+    <div class="card">
+        <img src="freefire.jpg" alt="Free Fire">
+        <div class="card-title">Free Fire</div>
+        <button class="btn">Sargyt et</button>
+    </div>
+    <div class="card">
+        <img src="mobilelegends.jpg" alt="Mobile Legends">
+        <div class="card-title">Mobile Legends</div>
+        <button class="btn">Sargyt et</button>
+    </div>
+    <div class="card">
+        <img src="valorant.jpg" alt="Valorant">
+        <div class="card-title">Valorant</div>
+        <button class="btn">Sargyt et</button>
+    </div>
+</div>
+
+<nav>
+    <a href="#">
+        🎮
+        <span>Oýunlar</span>
+    </a>
+    <a href="#">
+        📦
+        <span>Sargytlar</span>
+    </a>
+    <a href="#">
+        📊
+        <span>Analiz</span>
+    </a>
+</nav>
 
 </body>
 </html>
