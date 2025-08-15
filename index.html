@@ -2,55 +2,67 @@
 <html lang="tm">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Game Market</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GAME MARKET</title>
+<meta name="color-scheme" content="dark light">
 <style>
   :root{
-    --bg:#0b1220; --panel:#0f172a; --paper:#ffffff; --ink:#0b1220; --muted:#64748b;
-    --line:#e5e7eb; --brand:#111827; --btn:#16a34a; --btnText:#fff; --radius:16px;
+    --bg:#0b1220; --layer:#0f172a; --ink:#e5e7eb; --muted:#94a3b8;
+    --line:#1f2937; --accent:#2563eb; --btn:#16a34a; --btn-ink:#fff;
+    --radius:16px;
   }
-  *{box-sizing:border-box}  body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;background:#0b1220;color:#e5e7eb}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  a{color:inherit;text-decoration:none}
 
-  /* HEADER */
-  header{position:sticky;top:0;z-index:20;background:#111827;color:#fff;border-bottom:1px solid #1f2937}
-  .wrap{max-width:1100px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
-  .brand{font-size:28px;font-weight:800;letter-spacing:.3px}
-  .langs{display:flex;gap:8px}
-  .chip{border:1px solid #334155;background:#0b1220;color:#e2e8f0;padding:6px 12px;border-radius:10px;cursor:pointer}
-  .chip.active{background:#2563eb;border-color:#2563eb;color:#fff}
+  /* Top bar */
+  header{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.9);backdrop-filter:blur(10px);
+         border-bottom:1px solid var(--line)}
+  .wrap{max-width:1100px;margin:0 auto;padding:.8rem 1rem;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;gap:.6rem;align-items:center;font-weight:800}
+  .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+        background:linear-gradient(135deg,#2563eb,#06b6d4)}
+  .langs{display:flex;gap:.4rem}
+  .chip{border:1px solid #334155;background:transparent;color:#cbd5e1;padding:.28rem .7rem;border-radius:999px;
+        font-size:.85rem;cursor:pointer}
+  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
 
-  /* INFO BAR */
-  .infobar{background:#fff;color:#111827;border-bottom:1px solid #e5e7eb}
-  .infobar .wrap{gap:18px;flex-wrap:wrap}
-  .info{display:flex;align-items:center;gap:10px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:999px;padding:8px 12px}
-  .info .ico{font-size:18px}
+  /* Info badges under header */
+  .infobar{border-bottom:1px solid var(--line);background:#0e1526}
+  .info-wrap{max-width:1100px;margin:0 auto;padding:.7rem 1rem;display:flex;gap:.6rem;flex-wrap:wrap}
+  .pill{display:inline-flex;gap:.45rem;align-items:center;background:#0b1220;border:1px solid var(--line);
+        padding:.42rem .7rem;border-radius:999px;color:var(--muted);white-space:nowrap}
 
-  /* MAIN */
-  main{max-width:1100px;margin:0 auto;padding:16px}
-  h2{margin:10px 0 14px;font-size:22px;font-weight:800}
+  /* Main */
+  main{max-width:1100px;margin:0 auto;padding:1rem}
+  h2{margin:.2rem 0 1rem;font-size:1.2rem}
 
-  /* GRID + CARD (2 sütin hemişe deň) */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .card{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-  .thumb{width:100%;height:150px;object-fit:cover;background:#e5e7eb}
-  .body{padding:10px 12px 14px;display:flex;flex-direction:column;gap:10px}
-  .title{font-weight:800;line-height:1.2}
-  .btn{display:inline-block;text-align:center;padding:10px 12px;border-radius:12px;background:var(--btn);color:var(--btnText);text-decoration:none;font-weight:700}
+  /* Grid 2 sütin — ähli kart deň */
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+  .card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+        background:#0b1220}
+  .thumb{width:100%;aspect-ratio:16/10;object-fit:cover;background:#111827}
+  .content{padding:.9rem}
+  .title{margin:0 0 .7rem;font-weight:800;font-size:1.05rem;color:#fff}
+  .btn{display:inline-block;padding:.6rem .9rem;border-radius:12px;background:var(--btn);color:var(--btn-ink);
+       font-weight:700;text-align:center}
   .btn:active{transform:translateY(1px)}
-  @media (min-width:1024px){ .thumb{height:180px} }
 
-  /* BOTTOM TABS (placeholder) */
-  .tabs{position:sticky;bottom:0;background:#0f172a;border-top:1px solid #1f2937}
-  .tabs .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-  .tab{padding:10px 0;text-align:center;color:#cbd5e1}
+  /* Footer tabs (placeholder) */
+  .tabs{position:sticky;bottom:0;background:#0f172a;border-top:1px solid var(--line)}
+  .tabs .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
+  .tab{padding:.6rem 0;text-align:center;color:#cbd5e1}
+
+  @media(min-width:1024px){
+    .thumb{aspect-ratio:16/9}
+  }
 </style>
 </head>
 <body>
-
-  <!-- HEADER -->
+  <!-- TOP -->
   <header>
     <div class="wrap">
-      <div class="brand" id="t-title">Game Market</div>
+      <div class="brand"><div class="logo">🎮</div><div id="t-market">GAME MARKET</div></div>
       <div class="langs">
         <button class="chip" data-lang="tm">TM</button>
         <button class="chip" data-lang="ru">RU</button>
@@ -59,12 +71,12 @@
     </div>
   </header>
 
-  <!-- INFO BAR -->
+  <!-- INFO BAR (7/24 – 100% – Tiz) -->
   <section class="infobar">
-    <div class="wrap">
-      <div class="info"><span class="ico">🕘</span><span id="t-24">7/24 hyzmat</span></div>
-      <div class="info"><span class="ico">🛡️</span><span id="t-safe">100% howpsuz</span></div>
-      <div class="info"><span class="ico">⚡</span><span id="t-fast">Tiz eltip berme</span></div>
+    <div class="info-wrap">
+      <div class="pill">🕘 <span id="t-online">7/24 onlaýn</span></div>
+      <div class="pill">🛡️ <span id="t-safe">100% Howpsuz</span></div>
+      <div class="pill">⚡ <span id="t-fast">Tiz eltip berme</span></div>
     </div>
   </section>
 
@@ -74,7 +86,7 @@
     <div id="grid" class="grid"></div>
   </main>
 
-  <!-- BOTTOM (placeholder) -->
+  <!-- BOTTOM (placeholder only) -->
   <nav class="tabs">
     <div class="wrap">
       <div class="tab" id="n-games">🎮 Oýunlar</div>
@@ -84,89 +96,95 @@
   </nav>
 
 <script>
-  /* ---- DATA ---- */
-  const PRODUCTS = [
-    { id:'pubg', name:{tm:'PUBG Mobile',ru:'PUBG Mobile',en:'PUBG Mobile'}, img:'img/pubg.png' },
-    { id:'freefire', name:{tm:'Free Fire (NonID/VN/IN/TW)',ru:'Free Fire (NonID/VN/IN/TW)',en:'Free Fire (NonID/VN/IN/TW)'}, img:'img/freefire.png' },
-    { id:'deltaforce', name:{tm:'Delta Force',ru:'Delta Force',en:'Delta Force'}, img:'img/deltaforce.png' },
-    { id:'genshin', name:{tm:'Genshin Impact',ru:'Genshin Impact',en:'Genshin Impact'}, img:'img/genshin.png' },
-    { id:'arenabreakout', name:{tm:'Arena Breakout',ru:'Arena Breakout',en:'Arena Breakout'}, img:'img/arenabreakout.png' },
-    { id:'zepeto', name:{tm:'Zepeto',ru:'Zepeto',en:'Zepeto'}, img:'img/zepeto.png' },
-    { id:'clash', name:{tm:'Clash of Clans',ru:'Clash of Clans',en:'Clash of Clans'}, img:'img/clash.png' },
-    { id:'roblox', name:{tm:'Roblox',ru:'Roblox',en:'Roblox'}, img:'img/roblox.png' },
-    { id:'fortnite', name:{tm:'Fortnite',ru:'Fortnite',en:'Fortnite'}, img:'img/fortnite.png' },
-    { id:'codm', name:{tm:'Call of Duty Mobile',ru:'Call of Duty Mobile',en:'Call of Duty Mobile'}, img:'img/codm.png' },
-    { id:'mlbb', name:{tm:'Mobile Legends',ru:'Mobile Legends',en:'Mobile Legends'}, img:'img/mlbb.png' },
-    { id:'amongus', name:{tm:'Among Us',ru:'Among Us',en:'Among Us'}, img:'img/amongus.png' },
+  /* ===== Data ===== */
+  const GAMES = [
+    {id:'pubg',          img:'img/pubg.png',          name:{tm:'PUBG Mobile',ru:'PUBG Mobile',en:'PUBG Mobile'}},
+    {id:'freefire',      img:'img/freefire.png',      name:{tm:'Free Fire (NonID/VN/IN/TW)',ru:'Free Fire (NonID/VN/IN/TW)',en:'Free Fire (NonID/VN/IN/TW)'}},
+    {id:'deltaforce',    img:'img/deltaforce.png',    name:{tm:'Delta Force',ru:'Delta Force',en:'Delta Force'}},
+    {id:'genshin',       img:'img/genshin.png',       name:{tm:'Genshin Impact',ru:'Genshin Impact',en:'Genshin Impact'}},
+    {id:'arenabreakout', img:'img/arenabreakout.png', name:{tm:'Arena Breakout',ru:'Arena Breakout',en:'Arena Breakout'}},
+    {id:'zepeto',        img:'img/zepeto.png',        name:{tm:'Zepeto',ru:'Zepeto',en:'Zepeto'}},
+    {id:'honor',         img:'img/honorofkings.png',  name:{tm:'Honor of Kings',ru:'Honor of Kings',en:'Honor of Kings'}},
+    {id:'brawlfast',     img:'img/brawlfast.png',     name:{tm:'Brawl Stars (Fast)',ru:'Brawl Stars (Fast)',en:'Brawl Stars (Fast)'}},
+    {id:'mlbbcdkey',     img:'img/mlbbcdkey.png',     name:{tm:'MLBB-CDKey',ru:'MLBB-CDKey',en:'MLBB-CDKey'}},
+    {id:'ruonly',        img:'img/ruonly.png',        name:{tm:'(RU Only)',ru:'(Только RU)',en:'(RU Only)'}},
+    {id:'brawlproxy',    img:'img/brawlproxy.png',    name:{tm:'Brawl Stars (Proxy)',ru:'Brawl Stars (Proxy)',en:'Brawl Stars (Proxy)'}},
+    {id:'marvelrivals',  img:'img/marvelrivals.png',  name:{tm:'Marvel Rivals Zepeto Tarisland',ru:'Marvel Rivals Zepeto Tarisland',en:'Marvel Rivals Zepeto Tarisland'}},
   ];
 
   const I18N = {
-    tm:{ title:'Game Market', g:'Oýunlar', order:'Sargyt et', i24:'7/24 hyzmat', safe:'100% howpsuz', fast:'Tiz eltib berme',
-         navG:'Oýunlar',navO:'Sargytlar',navA:'Analiz' },
-    ru:{ title:'Игровой рынок', g:'Игры', order:'Заказать', i24:'Круглосуточно', safe:'100% безопасно', fast:'Быстрая доставка',
-         navG:'Игры',navO:'Заказы',navA:'Аналитика' },
-    en:{ title:'Game Market', g:'Games', order:'Order', i24:'24/7 online', safe:'100% secure', fast:'Fast delivery',
-         navG:'Games',navO:'Orders',navA:'Analytics' },
+    tm:{ market:'GAME MARKET', games:'Oýunlar', order:'Sargyt et',
+         online:'7/24 onlaýn', safe:'100% Howpsuz', fast:'Tiz eltip berme',
+         navG:'Oýunlar', navO:'Sargytlar', navA:'Analiz' },
+    ru:{ market:'Игровой маркет', games:'Игры', order:'Заказать',
+         online:'Круглосуточно', safe:'100% Безопасно', fast:'Быстрая доставка',
+         navG:'Игры', navO:'Заказы', navA:'Аналитика' },
+    en:{ market:'GAME MARKET', games:'Games', order:'Order',
+         online:'24/7 online', safe:'100% Secure', fast:'Fast delivery',
+         navG:'Games', navO:'Orders', navA:'Analytics' },
   };
 
-  const LSKEY='gm-lang';
-  let lang = localStorage.getItem(LSKEY) || 'tm';
+  const LS='gm-lang';
+  let lang = localStorage.getItem(LS) || 'tm';
 
-  /* ---- RENDER ---- */
-  function render(){
-    const t=I18N[lang];
-    // header + info
-    document.getElementById('t-title').textContent=t.title;
-    document.getElementById('t-games').textContent=t.g;
-    document.getElementById('t-24').textContent=t.i24;
-    document.getElementById('t-safe').textContent=t.safe;
-    document.getElementById('t-fast').textContent=t.fast;
-    document.getElementById('n-games').textContent='🎮 '+t.navG;
-    document.getElementById('n-orders').textContent='📦 '+t.navO;
+  /* ===== Render ===== */
+  function renderTexts(){
+    const t = I18N[lang];
+    document.getElementById('t-market').textContent = t.market;
+    document.getElementById('t-games').textContent  = t.games;
+    document.getElementById('t-online').textContent= t.online;
+    document.getElementById('t-safe').textContent  = t.safe;
+    document.getElementById('t-fast').textContent  = t.fast;
+    document.getElementById('n-games').textContent = '🎮 '+t.navG;
+    document.getElementById('n-orders').textContent= '📦 '+t.navO;
     document.getElementById('n-analytics').textContent='📊 '+t.navA;
-    document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.lang===lang));
+    document.querySelectorAll('.chip').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  }
 
-    // grid
-    const grid=document.getElementById('grid');
-    grid.innerHTML='';
-    PRODUCTS.forEach(p=>{
-      const a=document.createElement('a');
-      a.href='order.html?game='+encodeURIComponent(p.id); // täze sahypa
-      a.target='_blank';
+  function placeholderSVG(title){
+    return `data:image/svg+xml;utf8,${encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'>
+        <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+          <stop offset='0%' stop-color='#1f2937'/><stop offset='100%' stop-color='#111827'/>
+        </linearGradient></defs>
+        <rect width='100%' height='100%' fill='url(#g)'/>
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+              font-family='Arial' font-size='36' fill='#cbd5e1'>${title}</text>
+      </svg>` )}`;
+  }
+
+  function renderGrid(){
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    const t = I18N[lang];
+    GAMES.forEach(g=>{
+      const a = document.createElement('a');
       a.className='card';
+      a.href = 'order.html?game='+encodeURIComponent(g.id);
+      a.target = '_blank';
       a.innerHTML = `
-        <img class="thumb" src="${p.img}" alt="${p.name[lang]||p.name.tm}"
-             onerror="this.src='data:image/svg+xml;utf8,${encodeURIComponent(placeholder(p.name[lang]||p.name.tm))}'">
-        <div class="body">
-          <div class="title">${p.name[lang]||p.name.tm}</div>
+        <img class="thumb" src="${g.img}" alt="${g.name[lang]||g.name.tm}"
+             onerror="this.src='${placeholderSVG(g.name[lang]||g.name.tm)}'">
+        <div class="content">
+          <h3 class="title">${g.name[lang]||g.name.tm}</h3>
           <span class="btn">${t.order}</span>
         </div>`;
       grid.appendChild(a);
     });
   }
 
-  // Simple SVG placeholder if image missing
-  function placeholder(text){
-    return `
-      <svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'>
-        <defs>
-          <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-            <stop offset='0%' stop-color='#e2e8f0'/><stop offset='100%' stop-color='#cbd5e1'/>
-          </linearGradient>
-        </defs>
-        <rect width='100%' height='100%' fill='url(#g)'/>
-        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-              font-family='Arial' font-size='36' fill='#334155'>${text}</text>
-      </svg>`;
+  function setLang(l){
+    lang = l; localStorage.setItem(LS,l);
+    renderTexts(); renderGrid();
   }
 
-  // language switching
+  // events
   document.querySelectorAll('.chip').forEach(b=>{
-    b.addEventListener('click',()=>{ lang=b.dataset.lang; localStorage.setItem(LSKEY,lang); render(); });
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
   });
 
   // init
-  render();
+  renderTexts(); renderGrid();
 </script>
 </body>
 </html>
