@@ -1,235 +1,210 @@
-<!doctype html>
-<html lang="tk">
+<!DOCTYPE html>
+<html lang="tm">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GAME MARKET</title>
-<meta name="color-scheme" content="dark light">
-<style>
-  :root{
-    --bg:#0b1220; --panel:#0f172a; --ink:#e5e7eb; --muted:#9aa4b2; --line:#1f2937;
-    --accent:#3b82f6; --accent2:#60a5fa; --radius:16px; --shadow:0 12px 30px rgba(2,6,23,.35);
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b1220;color:var(--ink)}
-  a{color:inherit;text-decoration:none}
-
-  /* Topbar */
-  .topbar{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-          padding:.9rem 1rem;background:rgba(15,23,42,.95);border-bottom:1px solid var(--line)}
-  .brand{display:flex;gap:.6rem;align-items:center}
-  .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
-        background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:var(--shadow)}
-  .title{font-weight:800;letter-spacing:.3px}
-  .lang{display:flex;gap:.4rem}
-  .chip{border:1px solid #334155;background:transparent;color:#cbd5e1;padding:.28rem .7rem;border-radius:999px;
-        font-size:.85rem;cursor:pointer}
-  .chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
-
-  /* Main */
-  main{max-width:1000px;margin:0 auto;padding:1rem 1rem 5.5rem}
-
-  /* Section switch (bottom nav) */
-  .section{display:none}
-  .section.active{display:block}
-
-  /* Grid & Card */
-  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .card{
-    background:#0f172a;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
-    padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;height:300px
-  }
-  .thumb{width:100%;height:150px;object-fit:cover;border-radius:12px;background:#111827}
-  .gname{margin:0;font-size:18px;font-weight:800;text-align:center;color:#e5e7eb;line-height:1.2;min-height:44px;display:flex;align-items:center;justify-content:center}
-  .btn{margin-top:auto;display:inline-flex;align-items:center;gap:.5rem;padding:10px 16px;border:0;border-radius:12px;
-       background:var(--accent);color:#fff;font-weight:700;cursor:pointer;box-shadow:0 10px 20px rgba(59,130,246,.25)}
-  .btn:active{transform:translateY(1px)}
-  .badge{-webkit-user-select:none;user-select:none;position:absolute;top:.6rem;left:.6rem;background:#ef4444;color:#fff;
-         font-size:.75rem;padding:.18rem .5rem;border-radius:999px}
-  .cardwrap{position:relative}
-
-  /* Bottom nav */
-  .bottom{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(15,23,42,.97);border-top:1px solid var(--line)}
-  .tabs{display:grid;grid-template-columns:repeat(3,1fr)}
-  .tab{padding:.65rem 0;text-align:center;color:#cbd5e1;cursor:pointer}
-  .tab span{display:block;font-size:.82rem;margin-top:.12rem}
-  .tab.active{color:#fff;background:linear-gradient(180deg,rgba(59,130,246,.16),rgba(59,130,246,0))}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Market</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      background: white;
+      padding: 15px;
+    }
+    .feature {
+      text-align: center;
+      font-size: 14px;
+    }
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card-title {
+      font-weight: bold;
+      padding: 10px;
+    }
+    .btn {
+      display: block;
+      background: #28a745;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 0 0 10px 10px;
+    }
+    .btn:hover {
+      background: #218838;
+    }
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .lang-switch button {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+  </style>
 </head>
 <body>
-  <!-- TOP -->
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">🎮</div>
-      <div class="title" id="t-market">GAME MARKET</div>
-    </div>
-    <div class="lang">
-      <button class="chip" data-lang="tm">TM</button>
-      <button class="chip" data-lang="ru">RU</button>
-      <button class="chip active" data-lang="en">EN</button>
-    </div>
-  </header>
 
-  <main>
-    <!-- GAMES -->
-    <section id="page-games" class="section active">
-      <h2 id="t-games" style="margin:.2rem 0 1rem">Oýunlar</h2>
-      <div id="grid" class="grid"></div>
-    </section>
+<header>Game Market</header>
 
-    <!-- ORDERS -->
-    <section id="page-orders" class="section">
-      <h2 id="t-orders">Sargytlar</h2>
-      <div style="opacity:.7">Bu bölüm soň doldurylar.</div>
-    </section>
+<div class="lang-switch">
+  <button onclick="setLang('tm')">TM</button>
+  <button onclick="setLang('ru')">RU</button>
+  <button onclick="setLang('en')">EN</button>
+</div>
 
-    <!-- ANALYTICS -->
-    <section id="page-analytics" class="section">
-      <h2 id="t-analytics">Analiz</h2>
-      <div style="opacity:.7">Häzirlikçe boş.</div>
-    </section>
-  </main>
+<div class="features">
+  <div class="feature">
+    <div class="feature-icon">🕒</div>
+    <div id="f1">7/24 hyzmat</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🔒</div>
+    <div id="f2">100% howpsuz</div>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">⚡</div>
+    <div id="f3">Tiz eltip berme</div>
+  </div>
+</div>
 
-  <!-- BOTTOM NAV -->
-  <nav class="bottom">
-    <div class="tabs">
-      <div class="tab active" data-go="games">🎮 <span id="n-games">Oýunlar</span></div>
-      <div class="tab" data-go="orders">📦 <span id="n-orders">Sargytlar</span></div>
-      <div class="tab" data-go="analytics">📊 <span id="n-analytics">Analiz</span></div>
-    </div>
-  </nav>
+<div id="grid" class="grid">
+  <div class="card">
+    <img src="img/pubg.png" alt="PUBG Mobile">
+    <div class="card-title">PUBG Mobile</div>
+    <a href="pubg.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/freefire.png" alt="Free Fire">
+    <div class="card-title">Free Fire (NonID/VN/IN/TW)</div>
+    <a href="freefire.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/deltaforce.png" alt="Delta Force">
+    <div class="card-title">Delta Force</div>
+    <a href="deltaforce.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/genshin.png" alt="Genshin Impact">
+    <div class="card-title">Genshin Impact</div>
+    <a href="genshin.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/arena.png" alt="Arena Breakout">
+    <div class="card-title">Arena Breakout</div>
+    <a href="arena.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/zepeto.png" alt="Zepeto">
+    <div class="card-title">Zepeto</div>
+    <a href="zepeto.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/honorofkings.png" alt="Honor of Kings">
+    <div class="card-title">Honor of Kings</div>
+    <a href="honor.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/brawlstarsfast.png" alt="Brawl Stars Fast">
+    <div class="card-title">Brawl Stars (Fast)</div>
+    <a href="brawlfast.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/mlbbcdkey.png" alt="MLBB CDKey">
+    <div class="card-title">MLBB-CDKey</div>
+    <a href="mlbb.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/ruonly.png" alt="RU Only">
+    <div class="card-title">(RU Only)</div>
+    <a href="ruonly.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/brawlproxy.png" alt="Brawl Stars Proxy">
+    <div class="card-title">Brawl Stars (Proxy)</div>
+    <a href="brawlproxy.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+  <div class="card">
+    <img src="img/marvel.png" alt="Marvel Rivals">
+    <div class="card-title">Marvel Rivals Zepeto Tarisland</div>
+    <a href="marvel.html" class="btn" id="btn-text">Sargyt et</a>
+  </div>
+</div>
 
 <script>
-/* ================== I18N ================== */
-const D = {
-  tm:{
-    market:"GAME MARKET", games:"Oýunlar", orders:"Sargytlar", analytics:"Analiz", orderBtn:"Sargyt et",
-    gamesNames:{
-      pubg:"PUBG Mobile",
-      freefire:"Free Fire (NonID/VN/IN/TW)",
-      delta:"Delta Force",
-      genshin:"Genshin Impact",
-      arena:"Arena Breakout",
-      zepeto:"Zepeto",
-      honor:"Honor of Kings",
-      brawlfast:"Brawl Stars (Fast..)",
-      mlbbcd:"MLBB-CDKey",
-      ruonly:"(RU Only)",
-      brawlproxy:"Brawl Stars (Proxy..)",
-      marveltari:"Marvel Rivals / Tarisland"
+  const translations = {
+    tm: {
+      f1: "7/24 hyzmat",
+      f2: "100% howpsuz",
+      f3: "Tiz eltip berme",
+      btn: "Sargyt et"
+    },
+    ru: {
+      f1: "Поддержка 24/7",
+      f2: "100% безопасность",
+      f3: "Быстрая доставка",
+      btn: "Заказать"
+    },
+    en: {
+      f1: "24/7 Support",
+      f2: "100% Secure",
+      f3: "Fast Delivery",
+      btn: "Order Now"
     }
-  },
-  ru:{
-    market:"GAME MARKET", games:"Игры", orders:"Заказы", analytics:"Аналитика", orderBtn:"Заказать",
-    gamesNames:{
-      pubg:"PUBG Mobile",
-      freefire:"Free Fire (NonID/VN/IN/TW)",
-      delta:"Delta Force",
-      genshin:"Genshin Impact",
-      arena:"Arena Breakout",
-      zepeto:"Zepeto",
-      honor:"Honor of Kings",
-      brawlfast:"Brawl Stars (Fast..)",
-      mlbbcd:"MLBB-CDKey",
-      ruonly:"(RU Only)",
-      brawlproxy:"Brawl Stars (Proxy..)",
-      marveltari:"Marvel Rivals / Tarisland"
-    }
-  },
-  en:{
-    market:"GAME MARKET", games:"Games", orders:"Orders", analytics:"Analytics", orderBtn:"Order",
-    gamesNames:{
-      pubg:"PUBG Mobile",
-      freefire:"Free Fire (NonID/VN/IN/TW)",
-      delta:"Delta Force",
-      genshin:"Genshin Impact",
-      arena:"Arena Breakout",
-      zepeto:"Zepeto",
-      honor:"Honor of Kings",
-      brawlfast:"Brawl Stars (Fast..)",
-      mlbbcd:"MLBB-CDKey",
-      ruonly:"(RU Only)",
-      brawlproxy:"Brawl Stars (Proxy..)",
-      marveltari:"Marvel Rivals / Tarisland"
-    }
+  };
+
+  function setLang(lang) {
+    document.getElementById('f1').textContent = translations[lang].f1;
+    document.getElementById('f2').textContent = translations[lang].f2;
+    document.getElementById('f3').textContent = translations[lang].f3;
+    document.querySelectorAll('#btn-text').forEach(btn => {
+      btn.textContent = translations[lang].btn;
+    });
   }
-};
-const LS='siteLang';
-let lang = localStorage.getItem(LS) || 'tm';
-
-function setLang(l){
-  lang=l; localStorage.setItem(LS,l);
-  const d=D[l];
-  document.getElementById('t-market').textContent = d.market;
-  document.getElementById('t-games').textContent  = d.games;
-  document.getElementById('t-orders').textContent = d.orders;
-  document.getElementById('t-analytics').textContent = d.analytics;
-  document.getElementById('n-games').textContent  = d.games;
-  document.getElementById('n-orders').textContent = d.orders;
-  document.getElementById('n-analytics').textContent = d.analytics;
-  document.querySelectorAll('.chip').forEach(ch=>ch.classList.toggle('active', ch.dataset.lang===l));
-  render(); // ady we düwmäniň terjimesi täzelensin
-}
-document.querySelectorAll('.chip[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-
-/* ============== ROUTER (Bottom tabs) ============== */
-const pages = {
-  games: document.getElementById('page-games'),
-  orders: document.getElementById('page-orders'),
-  analytics: document.getElementById('page-analytics')
-};
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    Object.values(pages).forEach(p=>p.classList.remove('active'));
-    pages[t.dataset.go].classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-});
-
-/* ============== DATA ============== */
-const PRODUCTS = [
-  {id:"pubg",       img:"img/pubg.png",        url:"oyunlar/pubg.html"},
-  {id:"freefire",   img:"img/freefire.png",    url:"oyunlar/freefire.html"},
-  {id:"delta",      img:"img/deltaforce.png",  url:"oyunlar/deltaforce.html"},
-  {id:"genshin",    img:"img/genshin.png",     url:"oyunlar/genshin.html"},
-  {id:"arena",      img:"img/arena.png",       url:"oyunlar/arena.html"},
-  {id:"zepeto",     img:"img/zepeto.png",      url:"oyunlar/zepeto.html"},
-  {id:"honor",      img:"img/honor.png",       url:"oyunlar/honor.html"},
-  {id:"brawlfast",  img:"img/brawlfast.png",   url:"oyunlar/brawlfast.html"},
-  {id:"mlbbcd",     img:"img/mlbbcdkey.png",   url:"oyunlar/mlbb.html"},
-  {id:"ruonly",     img:"img/ruonly.png",      url:"oyunlar/ruonly.html"},
-  {id:"brawlproxy", img:"img/brawlproxy.png",  url:"oyunlar/brawlproxy.html"},
-  {id:"marveltari", img:"img/marveltaris.png", url:"oyunlar/marvel.html"},
-];
-
-/* ============== RENDER ============== */
-function card(p){
-  const name = D[lang].gamesNames[p.id] || 'Game';
-  const wrap = document.createElement('div');
-  wrap.className='cardwrap';
-  wrap.innerHTML = `
-    <article class="card">
-      <img class="thumb" src="${p.img}" alt="${name}">
-      <h3 class="gname">${name}</h3>
-      <button class="btn" data-i18n-btn>${D[lang].orderBtn}</button>
-    </article>`;
-  // img fallback
-  const img = wrap.querySelector('img');
-  img.onerror = ()=>{ img.src='img/placeholder.png'; };
-  // click -> new page
-  wrap.querySelector('.btn').addEventListener('click',()=>window.open(p.url,'_blank'));
-  return wrap;
-}
-
-function render(){
-  const grid = document.getElementById('grid');
-  grid.innerHTML='';
-  PRODUCTS.forEach(p=>grid.appendChild(card(p)));
-}
-
-setLang(lang); // init (çagyrylanda render hem gelýär)
 </script>
+
 </body>
 </html>
