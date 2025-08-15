@@ -97,6 +97,73 @@
 
       <!-- EMPTY PLACEHOLDER -->
       <div id="grid" class="grid">
+  <div class="product">
+    <img src="images/pubg.jpg" alt="PUBG Mobile" />
+    <h3 id="t-game-pubg">PUBG Mobile</h3>
+    <button class="buy-btn" onclick="window.location.href='pubg.html'">Sargyt et</button>
+  </div>
+
+  <div class="product">
+    <img src="images/freefire.jpg" alt="Free Fire" />
+    <h3 id="t-game-freefire">Free Fire (NonID/VN/IN/TW)</h3>
+    <button class="buy-btn" onclick="window.location.href='freefire.html'">Sargyt et</button>
+  </div>
+
+  <div class="product">
+    <img src="images/deltaforce.jpg" alt="Delta Force" />
+    <h3 id="t-game-delta">Delta Force</h3>
+    <button class="buy-btn" onclick="window.location.href='deltaforce.html'">Sargyt et</button>
+  </div>
+
+  <div class="product">
+    <img src="images/genshin.jpg" alt="Genshin Impact" />
+    <h3 id="t-game-genshin">Genshin Impact</h3>
+    <button class="buy-btn" onclick="window.location.href='genshin.html'">Sargyt et</button>
+  </div>
+</div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .product {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 320px; /* Kartanyň beýikligini deňleşdirdim */
+  }
+  .product img {
+    width: 100%;
+    height: 180px; /* Surat beýikligi deň */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .product h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    text-align: center;
+  }
+  .buy-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .buy-btn:hover {
+    background: #0056b3;
+  }
+</style>
   <!-- PUBG Mobile -->
   <div class="product">
     <img src="images/pubg.jpg" alt="PUBG Mobile" />
