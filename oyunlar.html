@@ -1,103 +1,123 @@
 <!DOCTYPE html>
 <html lang="tm">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oýunlar</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-    .card h3 {
-      margin: 10px 0;
-      font-size: 18px;
-    }
-    .card button {
-      background: #0070f3;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .card button:hover {
-      background: #005bb5;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oýunlar</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+  .card h3 {
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  .card button {
+    background: #0070f3;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  .card button:hover {
+    background: #005bb5;
+  }
+</style>
 </head>
 <body>
 
 <h1>Oýunlar</h1>
 <div class="grid">
   <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/PUBG_Mobile_logo.svg" alt="PUBG Mobile">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/PUBG_Mobile_logo.jpg" alt="PUBG Mobile">
     <h3>PUBG Mobile</h3>
-    <button onclick="window.open('pubg.html', '_blank')">Sargyt et</button>
+    <button onclick="location.href='pubg.html'">Sargyt et</button>
   </div>
   <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Free_Fire_logo.png" alt="Free Fire">
+    <img src="https://seeklogo.com/images/F/free-fire-logo-1B3C1F8F08-seeklogo.com.png" alt="Free Fire">
     <h3>Free Fire</h3>
-    <button onclick="window.open('freefire.html', '_blank')">Sargyt et</button>
+    <button onclick="location.href='freefire.html'">Sargyt et</button>
   </div>
   <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Delta_Force_logo.png" alt="Delta Force">
+    <img src="https://via.placeholder.com/300x140?text=Delta+Force" alt="Delta Force">
     <h3>Delta Force</h3>
-    <button onclick="window.open('deltaforce.html', '_blank')">Sargyt et</button>
+    <button onclick="location.href='deltaforce.html'">Sargyt et</button>
   </div>
   <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/en/6/64/Genshin_Impact_logo.svg" alt="Genshin Impact">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/46/Genshin_Impact_logo.svg" alt="Genshin Impact">
     <h3>Genshin Impact</h3>
-    <button onclick="window.open('genshin.html', '_blank')">Sargyt et</button>
+    <button onclick="location.href='genshin.html'">Sargyt et</button>
   </div>
   <div class="card">
-    <img src="https://via.placeholder.com/300x150?text=Arena+Breakout" alt="Arena Breakout">
+    <img src="https://via.placeholder.com/300x140?text=Arena+Breakout" alt="Arena Breakout">
     <h3>Arena Breakout</h3>
-    <button onclick="window.open('arena.html', '_blank')">Sargyt et</button>
+    <button onclick="location.href='arenabreakout.html'">Sargyt et</button>
   </div>
   <div class="card">
-    <img src="https://via.placeholder.com/300x150?text=Zepeto" alt="Zepeto">
+    <img src="https://via.placeholder.com/300x140?text=Zepeto" alt="Zepeto">
     <h3>Zepeto</h3>
-    <button onclick="window.open('zepeto.html', '_blank')">Sargyt et</button>
+    <button onclick="location.href='zepeto.html'">Sargyt et</button>
   </div>
   <div class="card">
-    <img src="https://via.placeholder.com/300x150?text=Honor+of+Kings" alt="Honor of Kings">
+    <img src="https://via.placeholder.com/300x140?text=Honor+of+Kings" alt="Honor of Kings">
     <h3>Honor of Kings</h3>
-    <button onclick="window.open('honor.html', '_blank')">Sargyt et</button>
+    <button onclick="location.href='honorofkings.html'">Sargyt et</button>
   </div>
   <div class="card">
-    <img src="https://via.placeholder.com/300x150?text=Brawl+Stars" alt="Brawl Stars">
-    <h3>Brawl Stars</h3>
-    <button onclick="window.open('brawl.html', '_blank')">Sargyt et</button>
+    <img src="https://via.placeholder.com/300x140?text=Brawl+Stars+Fast" alt="Brawl Stars Fast">
+    <h3>Brawl Stars (Fast..)</h3>
+    <button onclick="location.href='brawlfast.html'">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x140?text=MLBB-CDKey" alt="MLBB-CDKey">
+    <h3>MLBB-CDKey</h3>
+    <button onclick="location.href='mlbb.html'">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x140?text=RU+Only" alt="RU Only">
+    <h3>(RU Only)</h3>
+    <button onclick="location.href='ruonly.html'">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x140?text=Brawl+Stars+Proxy" alt="Brawl Stars Proxy">
+    <h3>Brawl Stars (Proxy..)</h3>
+    <button onclick="location.href='brawlproxy.html'">Sargyt et</button>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300x140?text=Marvel+Rivals+Zepeto+Tarisland" alt="Marvel Rivals Zepeto Tarisland">
+    <h3>Marvel Rivals Zepeto Tarisland</h3>
+    <button onclick="location.href='marvel.html'">Sargyt et</button>
   </div>
 </div>
 
