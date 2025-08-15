@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sargyt Sahypasy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #1e293b;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    input, select, button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+    input, select {
+      width: 90%;
+      max-width: 400px;
+    }
+    button {
+      background-color: #22c55e;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #16a34a;
+    }
+  </style>
+</head>
+<body>
+  <header>🎮 Sargyt Sahypasy</header>
+  
+  <div class="container">
+    <h2 id="gameName"></h2>
+    <form>
+      <input type="text" placeholder="Adyňyz" required />
+      <input type="text" placeholder="ID / User ID" required />
+      <select required>
+        <option value="">Ölçeg / MUKDAR saýlaň</option>
+        <option>60 UC</option>
+        <option>300 UC</option>
+        <option>600 UC</option>
+        <option>1000 UC</option>
+      </select>
+      <button type="submit">Sargyt et</button>
+    </form>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const game = urlParams.get('g');
+    document.getElementById('gameName').textContent = game ? `Oýun: ${game}` : "Oýun saýlanmady";
+  </script>
+</body>
+</html>
