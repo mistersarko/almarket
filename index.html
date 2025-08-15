@@ -190,42 +190,45 @@
 </div>
 
 <style>
+  body {
+    background-color: #0d1b2a;
+    font-family: sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .product {
-    background: #fff;
-    border-radius: 12px;
+    gap: 15px;
     padding: 15px;
+  }
+  .card {
+    background-color: #1b263b;
+    border-radius: 12px;
+    overflow: hidden;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding-bottom: 10px;
   }
-  .product img {
+  .card img {
     width: 100%;
-    height: 180px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 8px;
   }
-  .product h3 {
+  .card h3 {
+    font-size: 1.1em;
     margin: 10px 0;
-    font-size: 18px;
   }
-  .buy-btn {
-    background: #007bff;
+  .btn {
+    background-color: #007bff;
     color: white;
-    border: none;
     padding: 8px 15px;
-    border-radius: 6px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
   }
-  .buy-btn:hover {
-    background: #0056b3;
-  }
-      </style>
-      </div>
+</style>
+</div>
 
       <!-- PRODUCTS (add later) -->
       <template id="tpl-card">
