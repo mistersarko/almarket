@@ -1,72 +1,156 @@
 <!DOCTYPE html>
 <html lang="tk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sargyt Sahypasy</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sargytlar</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #0f172a;
-      color: white;
+      background: #fff;
       margin: 0;
       padding: 0;
-      text-align: center;
+      color: #111;
     }
     header {
-      background-color: #1e293b;
+      text-align: center;
       padding: 15px;
       font-size: 20px;
       font-weight: bold;
+      border-bottom: 2px solid #000;
     }
-    .container {
-      padding: 20px;
-    }
-    input, select, button {
-      display: block;
-      margin: 10px auto;
+    .order {
+      border-bottom: 1px solid #ddd;
       padding: 10px;
+    }
+    .order-time {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    .order-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .order-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .order-left img {
+      width: 40px;
+      height: 40px;
+    }
+    .order-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .order-info b {
       font-size: 16px;
-      border-radius: 5px;
-      border: none;
     }
-    input, select {
-      width: 90%;
-      max-width: 400px;
+    .order-info small {
+      color: #555;
     }
-    button {
-      background-color: #22c55e;
-      color: white;
-      cursor: pointer;
+    .order-right {
+      text-align: right;
     }
-    button:hover {
-      background-color: #16a34a;
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .discount {
+      color: #d00;
+      font-size: 14px;
+    }
+    .status {
+      margin-top: 3px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .sent {
+      color: green;
+    }
+    .cancelled {
+      color: red;
     }
   </style>
 </head>
 <body>
-  <header>🎮 Sargyt Sahypasy</header>
-  
-  <div class="container">
-    <h2 id="gameName"></h2>
-    <form>
-      <input type="text" placeholder="Adyňyz" required />
-      <input type="text" placeholder="ID / User ID" required />
-      <select required>
-        <option value="">Ölçeg / MUKDAR saýlaň</option>
-        <option>60 UC</option>
-        <option>300 UC</option>
-        <option>600 UC</option>
-        <option>1000 UC</option>
-      </select>
-      <button type="submit">Sargyt et</button>
-    </form>
+
+  <header>GAME MARKET<br><small>Sargytlar</small></header>
+
+  <div class="order">
+    <div class="order-time">21.04.2025 12:34</div>
+    <div class="order-body">
+      <div class="order-left">
+        <img src="pubg_uc.png" alt="PUBG UC">
+        <div class="order-info">
+          <b>PUBG Mobile</b>
+          <small>325 UC (300+25)</small>
+        </div>
+      </div>
+      <div class="order-right">
+        <div class="price">₽269</div>
+        <div class="discount">-10%</div>
+        <div class="status cancelled">Ýatyryldy</div>
+      </div>
+    </div>
   </div>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const game = urlParams.get('g');
-    document.getElementById('gameName').textContent = game ? `Oýun: ${game}` : "Oýun saýlanmady";
-  </script>
+  <div class="order">
+    <div class="order-time">21.04.2025 22:34</div>
+    <div class="order-body">
+      <div class="order-left">
+        <img src="pubg_uc.png" alt="PUBG UC">
+        <div class="order-info">
+          <b>PUBG Mobile</b>
+          <small>60 UC</small>
+        </div>
+      </div>
+      <div class="order-right">
+        <div class="price">₽40.22</div>
+        <div class="discount">-10%</div>
+        <div class="status sent">Ugratdyk</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="order">
+    <div class="order-time">21.04.2025 22:00</div>
+    <div class="order-body">
+      <div class="order-left">
+        <img src="pubg_uc.png" alt="PUBG UC">
+        <div class="order-info">
+          <b>PUBG Mobile</b>
+          <small>60 UC</small>
+        </div>
+      </div>
+      <div class="order-right">
+        <div class="price">₽39.32</div>
+        <div class="discount">-10%</div>
+        <div class="status cancelled">Ýatyryldy</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="order">
+    <div class="order-time">21.04.2025 22:44</div>
+    <div class="order-body">
+      <div class="order-left">
+        <img src="pubg_uc.png" alt="PUBG UC">
+        <div class="order-info">
+          <b>PUBG Mobile</b>
+          <small>325 UC (300+25)</small>
+        </div>
+      </div>
+      <div class="order-right">
+        <div class="price">₽285.92</div>
+        <div class="discount">-10%</div>
+        <div class="status sent">Ugratdyk</div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
